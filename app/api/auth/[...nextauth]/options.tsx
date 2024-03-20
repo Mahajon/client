@@ -1,12 +1,11 @@
 import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { cert } from "firebase-admin/app"
-import { doc, setDoc } from "firebase/firestore"
 import NextAuth, { NextAuthOptions } from "next-auth"
 import { Adapter } from "next-auth/adapters"
 import FacebookProvider from "next-auth/providers/facebook"
 import GoogleProvider from "next-auth/providers/google"
 
-import { firestore } from "@/lib/firebase"
+import { auth, firestore } from "@/lib/firebase"
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -37,20 +36,17 @@ export const authOptions: NextAuthOptions = {
   }) as Adapter,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      //account
-      //call bckend to check if user is allowed to sign in
-      const url = `${process.env.API_BASE_URL}/login`
+      console.log("signIn", user, account, profile, email, credentials)
+      const url = `${process.env.API_BASE_URL}/login/social/${account?.provider}`
       const response = await fetch(url, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${account?.id_token}`,
         },
-        body: JSON.stringify({
-          provider: account?.provider,
-          token: account?.access_token,
-        }),
       })
       const data = await response.json()
+      console.log(data)
       if (response.ok) {
         return true
       } else {
