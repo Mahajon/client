@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth"
 
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 
 import { UserDropdownMenu } from "./dropdown"
@@ -34,13 +35,13 @@ import LoginButton from "./loginButton"
 
 async function UserNavigation() {
   const session = await getServerSession(authOptions)
-  console.log(session)
 
-  // if (session) {
-  //   return <UserDropdownMenu user={session?.user} />
-  // }
   if (!session?.user) {
-    return <LoginButton />
+    return (
+      <>
+        <ThemeToggle /> <LoginButton />
+      </>
+    )
   }
   return <UserDropdownMenu user={session?.user} />
 }

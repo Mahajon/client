@@ -14,8 +14,6 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
         options={{ showSpinner: true }}
         showOnShallow
       />
-      {/* <SessionProvider>
-      </SessionProvider> */}
     </>
   )
 }

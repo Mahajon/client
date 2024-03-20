@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { signIn } from "next-auth/react"
 
+import { handleOAuthSignIn } from "@/lib/auth"
 import { buttonVariants } from "@/components/ui/button"
 
 export default function LoginPage() {
@@ -17,7 +18,7 @@ export default function LoginPage() {
 
       <div className="grid gap-4">
         <button
-          onClick={() => signIn("github")}
+          onClick={() => handleOAuthSignIn("google")}
           className={buttonVariants({ variant: "default" })}
         >
           Sign in with GitHub

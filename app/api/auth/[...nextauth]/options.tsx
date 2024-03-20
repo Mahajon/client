@@ -2,31 +2,46 @@ import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { cert } from "firebase-admin/app"
 import NextAuth, { NextAuthOptions } from "next-auth"
 import { Adapter } from "next-auth/adapters"
-import FacebookProvider from "next-auth/providers/facebook"
-import GoogleProvider from "next-auth/providers/google"
+import { decode, encode } from "next-auth/jwt"
+import CredentialsProvider from "next-auth/providers/credentials"
 
-import { auth, firestore } from "@/lib/firebase"
+import { auth } from "@/lib/firebase"
 
 export const authOptions: NextAuthOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      profile(profile) {
-        return {
-          id: profile.sub,
-          role: profile.role ?? "user",
-          name: profile.name,
-          email: profile.email,
-          image: profile.picture,
+    CredentialsProvider({
+      name: "Social Auth",
+      credentials: {},
+      authorize: async ({ idToken }: any, _req) => {
+        if (idToken) {
+          try {
+            const response = await fetch(
+              `${process.env.API_BASE_URL}/login/social/google`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${idToken}`,
+                },
+              }
+            )
+            const user = await response.json()
+            if (response.ok) {
+              return {
+                ...user,
+                role: user.role ?? "user",
+                idToken: idToken,
+              }
+            }
+          } catch (err) {
+            console.error(err)
+          }
         }
+        return null
       },
     }),
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_CLIENT_ID as string,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
-    }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: FirestoreAdapter({
     credential: cert({
       projectId: process.env.FIREBASE_PROJECT_ID,
@@ -34,38 +49,33 @@ export const authOptions: NextAuthOptions = {
       privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
     }),
   }) as Adapter,
+  session: {
+    strategy: "jwt",
+  },
+  jwt: { encode, decode },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log("signIn", user, account, profile, email, credentials)
-      const url = `${process.env.API_BASE_URL}/login/social/${account?.provider}`
-      const response = await fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${account?.id_token}`,
-        },
-      })
-      const data = await response.json()
-      console.log(data)
-      if (response.ok) {
-        return true
-      } else {
-        return false
-      }
+      return true
     },
     async redirect({ url, baseUrl }) {
       return baseUrl
     },
     async session({ session, user, token }) {
-      console.log("session", session)
-      console.log("user", user)
-      console.log("token", token)
-      if (user) {
-        session.user.role = user?.role ?? "user"
+      if (token) {
+        session.user.role = token.role ?? "user"
+        session.accessToken = token.accessToken
+        session.user.image = token.image ?? ""
       }
       return session
     },
     async jwt({ token, user, account, profile }) {
+      if (user) {
+        token.accessToken = user.idToken
+        token.role = user.role ?? "user"
+        token.email = user.email
+        token.name = user.name
+        token.image = user.picture
+      }
       return token
     },
   },

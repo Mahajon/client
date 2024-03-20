@@ -4,7 +4,6 @@ import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/navigation/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
 
 import { NavigationMenuDemo } from "./NavigationMenu"
 import UserNavigation from "./user/index"
@@ -50,7 +49,7 @@ export function SiteHeader() {
                 <span className="sr-only">Twitter</span>
               </div>
             </Link>
-            <ThemeToggle />
+
             <UserNavigation />
           </nav>
         </div>

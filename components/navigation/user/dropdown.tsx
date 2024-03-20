@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  Check,
   Cloud,
   CreditCard,
   // Github,
@@ -9,15 +10,19 @@ import {
   LogOut,
   Mail,
   MessageSquare,
+  Monitor,
+  Moon,
   Plus,
   PlusCircle,
   Settings,
+  Sun,
   User,
   UserPlus,
   Users,
 } from "lucide-react"
 import NextAuth from "next-auth/next"
 import { signOut } from "next-auth/react"
+import { useTheme } from "next-themes"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -37,12 +42,12 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 export function UserDropdownMenu({ user }: { user: any }) {
-  const image = user.image
+  const { setTheme, theme } = useTheme()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar className="cursor-pointer">
-          <AvatarImage src={image} alt="user" />
+          <AvatarImage src={user.image} alt="user" />
           <AvatarFallback>{user.name[0]}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -97,6 +102,47 @@ export function UserDropdownMenu({ user }: { user: any }) {
                 <DropdownMenuItem>
                   <PlusCircle className="mr-2 h-4 w-4" />
                   <span>More...</span>
+                </DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuPortal>
+          </DropdownMenuSub>
+          <DropdownMenuSub>
+            <DropdownMenuSubTrigger>
+              <UserPlus className="mr-2 h-4 w-4" />
+              <span>Theme</span>
+            </DropdownMenuSubTrigger>
+            <DropdownMenuPortal>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem
+                  className="flex items-center justify-between"
+                  onClick={() => setTheme("system")}
+                >
+                  <div className="flex items-center justify-start">
+                    <Monitor className="mr-2 h-4 w-4" />
+                    <span>System</span>
+                  </div>
+                  {theme === "system" && <Check className="h-4 w-4 ml-2" />}
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-center justify-between"
+                  onClick={() => setTheme("light")}
+                >
+                  <div className="flex items-center justify-start">
+                    <Monitor className="mr-2 h-4 w-4" />
+                    <span>Light</span>
+                  </div>
+                  {theme === "light" && <Check className="h-4 w-4 ml-2" />}
+                </DropdownMenuItem>
+
+                <DropdownMenuItem
+                  className="flex items-center justify-between"
+                  onClick={() => setTheme("dark")}
+                >
+                  <div className="flex items-center justify-start">
+                    <Moon className="mr-2 h-4 w-4" />
+                    <span>Dark</span>
+                  </div>
+                  {theme === "dark" && <Check className="h-4 w-4" ml-2 />}
                 </DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
