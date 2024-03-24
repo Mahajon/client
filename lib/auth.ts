@@ -4,14 +4,18 @@ import {
   GoogleAuthProvider,
   getAuth,
   getRedirectResult,
+  linkWithPopup,
   signInAnonymously,
   signInWithPopup,
   signInWithRedirect,
   type AuthProvider,
 } from "firebase/auth"
+import { getServerSession } from "next-auth"
 import { signIn } from "next-auth/react"
+import { toast } from "sonner"
 
 import { auth } from "@/lib/firebase"
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 
 const handleAnonymousSignIn = () => {
   signInAnonymously(auth)
@@ -25,7 +29,7 @@ const handleAnonymousSignIn = () => {
     .catch((err) => console.error(err))
 }
 
-const handleOAuthSignIn = async (provider: string) => {
+const signin = async (provider: string) => {
   let authProvider: AuthProvider
   switch (provider) {
     case "github":
@@ -37,15 +41,15 @@ const handleOAuthSignIn = async (provider: string) => {
     default:
       authProvider = new GoogleAuthProvider()
   }
-
   signInWithPopup(auth, authProvider)
     .then((result: any) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
       const idToken = result._tokenResponse.idToken as string
-      signIn("credentials", {
-        idToken,
-      })
+      // signIn("credentials", {
+      //   idToken,
+      // })
+      const res = signIn("credentials", { idToken })
     })
     .catch((error) => {
       // Handle Errors here.
@@ -65,8 +69,10 @@ const handleOAuthSignIn = async (provider: string) => {
         default:
           credential = GoogleAuthProvider.credentialFromError(error)
       }
-      console.error("errorCode: ", errorCode)
+      console.log(errorMessage)
+      toast.error(errorMessage)
     })
+  return
 }
 
-export { handleOAuthSignIn }
+export { signin }

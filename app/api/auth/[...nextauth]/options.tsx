@@ -15,18 +15,15 @@ export const authOptions: NextAuthOptions = {
       authorize: async ({ idToken }: any, _req) => {
         if (idToken) {
           try {
-            const response = await fetch(
-              `${process.env.API_BASE_URL}/login/social/google`,
-              {
-                method: "GET",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${idToken}`,
-                },
-              }
-            )
+            const response = await fetch(`${process.env.API_BASE_URL}/login`, {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${idToken}`,
+              },
+            })
             const user = await response.json()
-            if (response.ok) {
+            if (response.ok && user.uid) {
               return {
                 ...user,
                 role: user.role ?? "user",
@@ -34,7 +31,7 @@ export const authOptions: NextAuthOptions = {
               }
             }
           } catch (err) {
-            console.error(err)
+            return err
           }
         }
         return null
@@ -52,12 +49,23 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  // pages: {
+  //   signIn: "/login",
+  //   signOut: "/logout",
+  //   // error: "/auth/error",
+  //   // verifyRequest: "/auth/verify-request",
+  //   // newUser: "/auth/new-user",
+  // },
+
   jwt: { encode, decode },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       return true
     },
     async redirect({ url, baseUrl }) {
+      if (!url.includes("login")) {
+        return url
+      }
       return baseUrl
     },
     async session({ session, user, token }) {
@@ -65,6 +73,7 @@ export const authOptions: NextAuthOptions = {
         session.user.role = token.role ?? "user"
         session.accessToken = token.accessToken
         session.user.image = token.image ?? ""
+        session.user.plan = token.plan ?? "free"
       }
       return session
     },
@@ -75,6 +84,7 @@ export const authOptions: NextAuthOptions = {
         token.email = user.email
         token.name = user.name
         token.image = user.picture
+        token.plan = user.plan ?? "free"
       }
       return token
     },

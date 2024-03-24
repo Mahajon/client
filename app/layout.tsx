@@ -1,21 +1,17 @@
-import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import "@/styles/globals.css"
+import { Metadata, Viewport } from "next"
+import { GeistMono } from "geist/font/mono"
+import { GeistSans } from "geist/font/sans"
 
+import { siteConfig } from "@/config/site"
+import { fontSans } from "@/lib/fonts"
+import { cn } from "@/lib/utils"
+import { Toaster } from "@/components/ui/sonner"
+import { SiteHeader } from "@/components/navigation/site-header"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeProvider } from "@/components/theme-provider"
 
-
-import { siteConfig } from "@/config/site";
-import { fontSans } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
-import { SiteHeader } from "@/components/navigation/site-header";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
-import { ThemeProvider } from "@/components/theme-provider";
-
-
-
-import Providers from "./providers";
-
+import Providers from "./providers"
 
 export const metadata: Metadata = {
   title: {
@@ -57,7 +53,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Providers>{children}</Providers>
+            <Providers>
+              {children}
+              <Toaster />
+            </Providers>
 
             <TailwindIndicator />
           </ThemeProvider>

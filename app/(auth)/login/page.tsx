@@ -1,47 +1,84 @@
 "use client"
 
+import Image from "next/image"
 import Link from "next/link"
-import { signIn } from "next-auth/react"
 
-import { handleOAuthSignIn } from "@/lib/auth"
-import { buttonVariants } from "@/components/ui/button"
+import { signin } from "@/lib/auth"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Github, Google } from "@/components/icons"
 
 export default function LoginPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold text-center">Welcome back</h1>
-        <p className="mt-2 text-center text-gray-600 dark:text-gray-400">
-          Sign in to continue
-        </p>
+    <div className="w-full lg:grid min-h-screen  lg:grid-cols-2 ">
+      <div className="flex items-center justify-center py-12">
+        <div className="mx-auto grid w-[350px] gap-6">
+          <div className="grid gap-2 text-center">
+            <h1 className="text-3xl font-bold">Login</h1>
+            <p className="text-balance text-muted-foreground">
+              Enter your email below to login to your account
+            </p>
+          </div>
+          <div className="grid gap-4">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="m@example.com"
+                required
+              />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <Link
+                  href="/forgot-password"
+                  className="ml-auto inline-block text-sm underline"
+                >
+                  Forgot your password?
+                </Link>
+              </div>
+              <Input id="password" type="password" required />
+            </div>
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => signin("google")}
+            >
+              <Google className="h-5 w-5 mr-2" />
+              Login with Google
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => signin("github")}
+            >
+              <Github className="h-5 w-5 mr-2" />
+              Login with Github
+            </Button>
+          </div>
+          <div className="mt-4 text-center text-sm">
+            Don&apos;t have an account?{" "}
+            <Link href="#" className="underline">
+              Sign up
+            </Link>
+          </div>
+        </div>
       </div>
-
-      <div className="grid gap-4">
-        <button
-          onClick={() => handleOAuthSignIn("google")}
-          className={buttonVariants({ variant: "default" })}
-        >
-          Sign in with GitHub
-        </button>
-        <button
-          onClick={() => signIn("google")}
-          className={buttonVariants({ variant: "outline" })}
-        >
-          Sign in with Google
-        </button>
+      <div className="hidden bg-muted lg:block">
+        <Image
+          src="/placeholder.svg"
+          alt="Image"
+          width="1920"
+          height="1080"
+          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
       </div>
-
-      <div className="flex flex-col items-center mt-4">
-        <p className="text-gray-600 dark:text-gray-400">
-          Don't have an account?
-        </p>
-        <Link
-          href="/auth/signup"
-          className="text-blue-600 dark:text-blue-400 hover:underline"
-        >
-          Sign up
-        </Link>
-      </div>
-    </section>
+    </div>
   )
 }

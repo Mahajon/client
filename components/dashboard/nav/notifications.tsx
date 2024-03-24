@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import {
+  Bell,
   Check,
   Cloud,
   CreditCard,
@@ -43,18 +44,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function UserDropdownMenu({ user }: { user: any }) {
+export function NotificationDropdown() {
   const { setTheme, theme } = useTheme()
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer h-10 w-10">
-          <AvatarImage src={user.image} alt="user" />
-          <AvatarFallback>{user.name[0]}</AvatarFallback>
-        </Avatar>
+      <DropdownMenuTrigger
+        asChild
+        className="cursor-pointer rounded-full flex flex-col items-center justify-center  p-2 mr-2 data-[state=open]:border-primary border-accent border-2"
+      >
+        <Bell className="h-10 w-10" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end">
-        <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
+      <DropdownMenuContent className="w-80" align="end">
+        <DropdownMenuLabel>Notifications</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
@@ -176,11 +177,4 @@ export function UserDropdownMenu({ user }: { user: any }) {
       </DropdownMenuContent>
     </DropdownMenu>
   )
-}
-
-{
-  /* <Button variant="secondary" size="icon" className="rounded-full">
-            <CircleUser className="h-5 w-5" />
-            <span className="sr-only">Toggle user menu</span>
-          </Button> */
 }
