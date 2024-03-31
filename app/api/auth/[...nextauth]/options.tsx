@@ -12,6 +12,16 @@ import CredentialsProvider from "next-auth/providers/credentials"
 
 import { auth } from "@/lib/firebase"
 
+const refreshIdToken = async () => {
+  auth.onAuthStateChanged(async function (user) {
+    if (user) {
+      const newIdToken = await user.getIdToken(true)
+      return newIdToken
+    }
+  })
+  return null
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -69,6 +79,10 @@ export const authOptions: NextAuthOptions = {
   jwt: { encode, decode },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      if (user) {
+        // add 60 minutes to the current time
+        user.expires = Date.now() + 60 * 60 * 1000
+      }
       return true
     },
     async redirect({ url, baseUrl }) {
@@ -83,6 +97,7 @@ export const authOptions: NextAuthOptions = {
         session.accessToken = token.accessToken
         session.user.image = token.image ?? ""
         session.user.plan = token.plan ?? "free"
+        session.expires = token.expires
       }
       return session
     },
@@ -94,6 +109,14 @@ export const authOptions: NextAuthOptions = {
         token.name = user.name
         token.image = user.picture
         token.plan = user.plan ?? "free"
+        token.expires = user.expires
+      }
+      if (Date.now() > token.expires) {
+        const newIdToken = await refreshIdToken()
+        if (newIdToken) {
+          token.accessToken = newIdToken
+          token.expires = Date.now() + 60 * 60 * 1000
+        }
       }
       return token
     },

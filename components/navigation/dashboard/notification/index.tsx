@@ -44,15 +44,15 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function NotificationDropdown() {
+export default function NotificationDropdown() {
   const { setTheme, theme } = useTheme()
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger
-        asChild
-        className="cursor-pointer rounded-full flex flex-col items-center justify-center  p-2 mr-2 data-[state=open]:border-primary border-accent border-2"
-      >
-        <Bell className="h-10 w-10" />
+      <DropdownMenuTrigger asChild className="cursor-pointer">
+        <Button variant="outline" size="icon" className="ml-auto h-8 w-8">
+          <Bell className="h-4 w-4" />
+          <span className="sr-only">Toggle notifications</span>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-80" align="end">
         <DropdownMenuLabel>Notifications</DropdownMenuLabel>

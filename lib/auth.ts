@@ -46,9 +46,6 @@ const signin = async (provider: string) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // The signed-in user info.
       const idToken = result._tokenResponse.idToken as string
-      // signIn("credentials", {
-      //   idToken,
-      // })
       const res = signIn("credentials", { idToken })
     })
     .catch((error) => {

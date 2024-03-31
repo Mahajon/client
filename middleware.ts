@@ -1,19 +1,18 @@
-import type { NextRequest } from "next/server"
-import { getServerSession } from "next-auth"
-
-import { authOptions } from "./app/api/auth/[...nextauth]/options"
+import { cookies } from "next/headers"
+import { NextRequest, NextResponse } from "next/server"
 
 export async function middleware(request: NextRequest) {
-  //   console.log(request.cookies.get("session"))
-    // const session = await getServerSession(authOptions)
-  //   console.log(session)
-  //   const currentUser = request.cookies.get("user")?.value
-  //   if (currentUser && request.nextUrl.pathname.startsWith("/login")) {
-  //     return Response.redirect(new URL("/dashboard", request.url))
-  //   }
-  //   if (!currentUser && !request.nextUrl.pathname.startsWith("/login")) {
-  //     return Response.redirect(new URL("/login", request.url))
-  //   }
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set("x-url", request.url)
+  if (!cookies().get("next-auth.session-token"))
+    if (request.nextUrl.pathname.startsWith("/dashboard")) {
+      return NextResponse.rewrite(new URL("/login", request.url))
+    }
+  return NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
 }
 
 export const config = {

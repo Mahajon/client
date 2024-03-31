@@ -23,8 +23,6 @@ import {
 } from "@/components/ui/card"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
-import { NotificationDropdown } from "./notifications"
-
 const MobileMenu = () => {
   return (
     <Sheet>

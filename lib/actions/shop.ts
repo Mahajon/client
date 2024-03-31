@@ -38,9 +38,9 @@ export const getShopList = async () => {
   return data
 }
 
-export const getShopDetails = async (shopId: number) => {
+export const getShopDetails = async (slug: string) => {
   const token = await getToken()
-  const response = await fetch(`${process.env.API_BASE_URL}shops/${shopId}/`, {
+  const response = await fetch(`${process.env.API_BASE_URL}shops/${slug}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

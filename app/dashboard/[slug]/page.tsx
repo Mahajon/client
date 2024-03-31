@@ -1,5 +1,5 @@
+import { getShopDetails } from "@/lib/actions/shop"
 import { Button } from "@/components/ui/button"
-import { getShopDetails } from "@/components/dashboard/shop/actions"
 
 export default async function ShopHome({
   params,

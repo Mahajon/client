@@ -1,5 +1,5 @@
+import DashboardSidebar from "../sidebar"
 import DashboardHeader from "./header"
-import DashboardSidebar from "./sidebar"
 
 interface RootLayoutProps {
   children: React.ReactNode

@@ -1,21 +1,38 @@
-import { Button } from "@/components/ui/button"
-import ShopCard from "@/components/dashboard/home/card"
-import { getShopList } from "@/components/dashboard/shop/actions"
+import { headers } from "next/headers"
+import { redirect } from "next/navigation"
+import { NextRequest, NextResponse } from "next/server"
+import { Search } from "lucide-react"
 
-export default async function DashboardHome() {
+import { getShopList } from "@/lib/actions/shop"
+import { Button } from "@/components/ui/button"
+import { Separator } from "@/components/ui/separator"
+import ShopCard from "@/components/dashboard/home/card"
+import { DashboardHomeNavigation } from "@/components/navigation/dashboard/home"
+
+export default async function DashboardHome(request: NextRequest) {
   const shops = await getShopList()
-  if (shops.length > 0) {
+  if (shops.length === 1) {
+    redirect(`/dashboard/${shops[0].slug}`)
+  }
+  if (shops.length > 1) {
     return (
-      <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-        <div className="flex items-center">
-          <h1 className="text-lg font-semibold md:text-2xl">My Shops</h1>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {shops.map((shop: any) => (
-            <ShopCard key={shop.id} shop={shop} />
-          ))}
-        </div>
-      </main>
+      <div className=" min-h-screen bg-gray-50 ">
+        <DashboardHomeNavigation>
+          <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+            <div className="w-full max-w-7xl mx-auto flex items-center py-4">
+              <h1 className="text-lg font-semibold md:text-2xl lg:text-3xl">
+                My Shops
+              </h1>
+            </div>
+
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {shops.map((shop: any) => (
+                <ShopCard key={shop.id} shop={shop} />
+              ))}
+            </div>
+          </main>
+        </DashboardHomeNavigation>
+      </div>
     )
   }
 }

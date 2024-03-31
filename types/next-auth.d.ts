@@ -12,6 +12,7 @@ declare module "next-auth" {
       role: string
       plan: string
     }
+    expires: number
   }
 
   interface User {
@@ -22,6 +23,7 @@ declare module "next-auth" {
     picture: string
     role: string
     plan: string
+    expires: number
   }
 }
 
@@ -33,5 +35,6 @@ declare module "next-auth/jwt" {
     name: string
     image: string
     plan: string
+    expires: number
   }
 }
