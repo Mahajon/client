@@ -1,4 +1,9 @@
+"use client"
+
+import { count } from "console"
+import path from "path"
 import Link from "next/link"
+import { usePathname, useSelectedLayoutSegments } from "next/navigation"
 import {
   Bell,
   Check,
@@ -39,6 +44,48 @@ import {
 } from "@/components/ui/card"
 
 const DashboardSidebar = () => {
+  const pathname = usePathname()
+  const segments = useSelectedLayoutSegments()
+  console.log(pathname, segments)
+  let URLs = [
+    {
+      name: "Dashboard",
+      url: "/dashboard",
+      icon: <Home className="h-4 w-4" />,
+      count: 0,
+    },
+  ]
+
+  if (segments.length > 0) {
+    URLs = [
+      ...URLs,
+      {
+        name: "Products",
+        url: `/dashboard/${segments[0]}/products`,
+        icon: <Package2 className="h-4 w-4" />,
+        count: 0,
+      },
+      {
+        name: "Orders",
+        url: `/dashboard/${segments[0]}/orders`,
+        icon: <ShoppingCart className="h-4 w-4" />,
+        count: 0,
+      },
+      {
+        name: "Customers",
+        url: `/dashboard/${segments[0]}/customers`,
+        icon: <Users className="h-4 w-4" />,
+        count: 0,
+      },
+      {
+        name: "Settings",
+        url: `/dashboard/${segments[0]}/settings`,
+        icon: <Settings className="h-4 w-4" />,
+        count: 0,
+      },
+    ]
+  }
+
   return (
     <div className="hidden border-r bg-muted/40 md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
@@ -54,44 +101,25 @@ const DashboardSidebar = () => {
         </div>
         <div className="flex-1">
           <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Home className="h-4 w-4" />
-              Dashboard
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <ShoppingCart className="h-4 w-4" />
-              Orders
-              <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
-                6
-              </Badge>
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
-            >
-              <Package className="h-4 w-4" />
-              Products{" "}
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <Users className="h-4 w-4" />
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
-            >
-              <LineChart className="h-4 w-4" />
-              Analytics
-            </Link>
+            {URLs.map((url) => (
+              <Link
+                key={url.url}
+                href={url.url}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2  transition-all hover:text-primary hover:bg-secondary ${
+                  url.url != "/dashboard" && pathname.startsWith(url.url)
+                    ? "bg-slate-600 text-white"
+                    : "text-muted-foreground"
+                }`}
+              >
+                {url.icon}
+                {url.name}
+                {url.count > 0 && (
+                  <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+                    {url.count}
+                  </Badge>
+                )}
+              </Link>
+            ))}
           </nav>
         </div>
         <div className="mt-auto p-4">

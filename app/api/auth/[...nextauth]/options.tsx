@@ -1,6 +1,11 @@
+import type {
+  GetServerSidePropsContext,
+  NextApiRequest,
+  NextApiResponse,
+} from "next"
 import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { cert } from "firebase-admin/app"
-import NextAuth, { NextAuthOptions } from "next-auth"
+import NextAuth, { NextAuthOptions, getServerSession } from "next-auth"
 import { Adapter } from "next-auth/adapters"
 import { decode, encode } from "next-auth/jwt"
 import CredentialsProvider from "next-auth/providers/credentials"
@@ -15,23 +20,27 @@ export const authOptions: NextAuthOptions = {
       authorize: async ({ idToken }: any, _req) => {
         if (idToken) {
           try {
-            const response = await fetch(`${process.env.API_BASE_URL}/login`, {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${idToken}`,
-              },
-            })
+            const response = await fetch(
+              `${process.env.API_BASE_URL}users/me/`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${idToken}`,
+                },
+              }
+            )
             const user = await response.json()
-            if (response.ok && user.uid) {
+            if (response.ok && user.email) {
               return {
                 ...user,
                 role: user.role ?? "user",
+                name: user.first_name + " " + user.last_name,
                 idToken: idToken,
               }
             }
           } catch (err) {
-            return err
+            return null
           }
         }
         return null
@@ -89,4 +98,18 @@ export const authOptions: NextAuthOptions = {
       return token
     },
   },
+}
+
+export function getSession(
+  ...args:
+    | [GetServerSidePropsContext["req"], GetServerSidePropsContext["res"]]
+    | [NextApiRequest, NextApiResponse]
+    | []
+) {
+  return getServerSession(...args, authOptions)
+}
+
+export const getToken = async () => {
+  const session = await getSession()
+  return session?.accessToken
 }

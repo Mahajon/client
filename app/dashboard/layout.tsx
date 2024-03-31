@@ -1,10 +1,5 @@
-import { getServerSession } from "next-auth"
-
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import DashboardNav from "@/components/dashboard/nav"
-import Header from "@/components/dashboard/nav/header"
+import { getShopList } from "@/components/dashboard/shop/actions"
 import NewShop from "@/components/dashboard/shop/new"
 
 interface RootLayoutProps {
@@ -12,8 +7,9 @@ interface RootLayoutProps {
 }
 
 export default async function DashboardLayout({ children }: RootLayoutProps) {
-  const shop = false
-  if (shop) {
+  const shops = await getShopList()
+  console.log(shops)
+  if (shops.length > 0) {
     return <DashboardNav>{children}</DashboardNav>
   }
   return <NewShop />
