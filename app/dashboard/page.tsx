@@ -1,15 +1,10 @@
-import { headers } from "next/headers"
 import { redirect } from "next/navigation"
-import { NextRequest, NextResponse } from "next/server"
-import { Search } from "lucide-react"
 
 import { getShopList } from "@/lib/actions/shop"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
 import ShopCard from "@/components/dashboard/home/card"
 import { DashboardHomeNavigation } from "@/components/navigation/dashboard/home"
 
-export default async function DashboardHome(request: NextRequest) {
+export default async function DashboardHome() {
   const shops = await getShopList()
   if (shops.length === 1) {
     redirect(`/dashboard/${shops[0].slug}`)
@@ -35,4 +30,5 @@ export default async function DashboardHome(request: NextRequest) {
       </div>
     )
   }
+  return null
 }
