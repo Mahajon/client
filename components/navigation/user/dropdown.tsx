@@ -180,7 +180,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
 
 {
   /* <Button variant="secondary" size="icon" className="rounded-full">
-            <CircleUser className="h-5 w-5" />
+            <CircleUser className="size-5" />
             <span className="sr-only">Toggle user menu</span>
           </Button> */
 }

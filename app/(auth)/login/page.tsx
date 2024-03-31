@@ -50,7 +50,7 @@ export default function LoginPage() {
               className="w-full"
               onClick={() => signin("google")}
             >
-              <Google className="h-5 w-5 mr-2" />
+              <Google className="size-5 mr-2" />
               Login with Google
             </Button>
             <Button
@@ -58,7 +58,7 @@ export default function LoginPage() {
               className="w-full"
               onClick={() => signin("github")}
             >
-              <Github className="h-5 w-5 mr-2" />
+              <Github className="size-5 mr-2" />
               Login with Github
             </Button>
           </div>

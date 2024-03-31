@@ -1,4 +1,3 @@
-
 import Link from "next/link"
 import {
   Bell,
@@ -50,7 +49,7 @@ const DashboardSidebar = () => {
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex items-center justify-between gap-x-3 px-4 py-3">
           <Link href="/" className="flex items-center gap-2 font-bold">
-            <Package2 className="h-5 w-5" />
+            <Package2 className="size-5" />
           </Link>
           <Slash className="h-4 text-gray-600" />
           <ShopSelect />

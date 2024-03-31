@@ -25,13 +25,13 @@ export default function ShopCard(shopObj: any) {
           <CardDescription>{shop.slug}</CardDescription>
         </div>
         <Button className="ml-auto" size="icon" variant="ghost">
-          <MoreHorizontalIcon className="w-4 h-4" />
+          <MoreHorizontalIcon className="size-4" />
           <span className="sr-only">Toggle menu</span>
         </Button>
       </CardHeader>
       <CardContent className="flex flex-col items-start gap-2 py-2 border-t">
         <div className="flex items-center gap-4 text-sm">
-          <ClockIcon className="w-4 h-4" />
+          <ClockIcon className="size-4" />
           <span className="text-gray-500 dark:text-gray-400">
             Deployed 3m ago
           </span>
