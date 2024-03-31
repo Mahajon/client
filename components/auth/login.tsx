@@ -29,7 +29,7 @@ export default function LoginDialog() {
             }}
           >
             <div className="flex items-center justify-center gap-x-2">
-              <Google className="h-8 w-8" />
+              <Google className="size-8" />
               <span className="font-medium">Sign in With Google</span>
             </div>
           </Button>

@@ -62,7 +62,7 @@ export default function NewShopPage() {
       reader.onload = (e) => {
         const img = document.createElement("img")
         img.src = e.target?.result as string
-        img.className = "h-full w-full object-cover"
+        img.className = "size-full object-cover"
         preview.innerHTML = ""
         preview?.appendChild(img)
       }

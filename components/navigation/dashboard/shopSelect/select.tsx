@@ -42,13 +42,13 @@ export default function Select({ shops }: { shops: any[] }) {
                 <AvatarImage src={currentShop.logo} alt={currentShop.name} />
               ) : (
                 <AvatarFallback>
-                  <BoxSelect className="h-6 w-6" />
+                  <BoxSelect className="size-6" />
                 </AvatarFallback>
               )}
             </Avatar>
             <span className="">{currentShop.name}</span>
           </div>
-          <ChevronsUpDown className="h-4 w-4" />
+          <ChevronsUpDown className="size-4" />
           <span className="sr-only">Toggle Shop</span>
         </Button>
       </DropdownMenuTrigger>
@@ -75,13 +75,13 @@ export default function Select({ shops }: { shops: any[] }) {
                     />
                   ) : (
                     <AvatarFallback>
-                      <BoxSelect className="h-6 w-6" />
+                      <BoxSelect className="size-6" />
                     </AvatarFallback>
                   )}
                 </Avatar>
                 <span className="">{currentShop.name}</span>
               </div>
-              {slug === shop.slug && <Check className="h-4 w-4 ml-auto" />}
+              {slug === shop.slug && <Check className="size-4 ml-auto" />}
             </Link>
           </DropdownMenuItem>
         ))}

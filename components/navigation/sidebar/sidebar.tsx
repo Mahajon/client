@@ -55,32 +55,32 @@ const Sidebar = () => {
     {
       name: "Dashboard",
       url: "/dashboard",
-      icon: <Home className="h-4 w-4" />,
+      icon: <Home className="size-4" />,
       count: 0,
     },
 
     {
       name: "Products",
       url: `/dashboard/${segments[0]}/products`,
-      icon: <Package2 className="h-4 w-4" />,
+      icon: <Package2 className="size-4" />,
       count: 0,
     },
     {
       name: "Orders",
       url: `/dashboard/${segments[0]}/orders`,
-      icon: <ShoppingCart className="h-4 w-4" />,
+      icon: <ShoppingCart className="size-4" />,
       count: 0,
     },
     {
       name: "Customers",
       url: `/dashboard/${segments[0]}/customers`,
-      icon: <Users className="h-4 w-4" />,
+      icon: <Users className="size-4" />,
       count: 0,
     },
     {
       name: "Settings",
       url: `/dashboard/${segments[0]}/settings`,
-      icon: <Settings className="h-4 w-4" />,
+      icon: <Settings className="size-4" />,
       count: 0,
     },
   ]
@@ -104,7 +104,7 @@ const Sidebar = () => {
           {url.icon}
           {url.name}
           {url.count > 0 && (
-            <Badge className="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">
+            <Badge className="ml-auto flex size-6 shrink-0 items-center justify-center rounded-full">
               {url.count}
             </Badge>
           )}
