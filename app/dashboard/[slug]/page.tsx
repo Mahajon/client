@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button"
 export default async function ShopHome({
   params,
 }: {
-  params: { shopid: number }
+  params: { slug: string }
 }) {
-  const shop: any = await getShopDetails(params.shopid)
+  const shop: any = await getShopDetails(params.slug)
 
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
