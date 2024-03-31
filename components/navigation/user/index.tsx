@@ -9,18 +9,16 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options"
 
 import { UserDropdownMenu } from "./dropdown"
 
-async function UserNavigation() {
+export default async function UserNavigation() {
   const session = await getServerSession(authOptions)
 
-  if (!session?.user) {
-    return (
-      <>
-        <ThemeToggle />
-        <LoginButton />
-      </>
-    )
+  if (session?.user) {
+    return <UserDropdownMenu user={session?.user} />
   }
-  return <UserDropdownMenu user={session?.user} />
+  return (
+    <>
+      <ThemeToggle />
+      <LoginButton />
+    </>
+  )
 }
-
-export default UserNavigation
