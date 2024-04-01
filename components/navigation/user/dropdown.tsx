@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { onAuthStateChanged } from "firebase/auth"
 import {
   Check,
   Cloud,
@@ -26,6 +27,7 @@ import NextAuth from "next-auth/next"
 import { signOut } from "next-auth/react"
 import { useTheme } from "next-themes"
 
+import { auth } from "@/lib/firebase"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {

@@ -5,20 +5,25 @@ import type {
 } from "next"
 import { FirestoreAdapter } from "@auth/firebase-adapter"
 import { cert } from "firebase-admin/app"
-import NextAuth, { NextAuthOptions, getServerSession } from "next-auth"
+import { NextAuthOptions, getServerSession } from "next-auth"
 import { Adapter } from "next-auth/adapters"
 import { decode, encode } from "next-auth/jwt"
 import CredentialsProvider from "next-auth/providers/credentials"
 
-import { auth } from "@/lib/firebase"
-
-const refreshIdToken = async () => {
-  auth.onAuthStateChanged(async function (user) {
-    if (user) {
-      const newIdToken = await user.getIdToken(true)
-      return newIdToken
-    }
+async function refreshIdToken(refreshToken: string) {
+  const url = `https://securetoken.googleapis.com/v1/token?key=${process.env.FIREBASE_API_KEY}`
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `grant_type=refresh_token&refresh_token=${refreshToken}`,
   })
+  if (response.ok) {
+    const data = await response.json()
+    return data.id_token
+  }
+
   return null
 }
 
@@ -27,7 +32,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Social Auth",
       credentials: {},
-      authorize: async ({ idToken }: any, _req) => {
+      authorize: async ({ idToken, refreshToken }: any, _req) => {
         if (idToken) {
           try {
             const response = await fetch(
@@ -47,6 +52,7 @@ export const authOptions: NextAuthOptions = {
                 role: user.role ?? "user",
                 name: user.first_name + " " + user.last_name,
                 idToken: idToken,
+                refreshToken: refreshToken,
               }
             }
           } catch (err) {
@@ -95,6 +101,7 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         session.user.role = token.role ?? "user"
         session.accessToken = token.accessToken
+        session.refreshToken = token.refreshToken
         session.user.image = token.image ?? ""
         session.user.plan = token.plan ?? "free"
         session.expires = token.expires
@@ -104,6 +111,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user, account, profile }) {
       if (user) {
         token.accessToken = user.idToken
+        token.refreshToken = user.refreshToken
         token.role = user.role ?? "user"
         token.email = user.email
         token.name = user.name
@@ -111,12 +119,10 @@ export const authOptions: NextAuthOptions = {
         token.plan = user.plan ?? "free"
         token.expires = user.expires
       }
-      if (Date.now() > token.expires) {
-        const newIdToken = await refreshIdToken()
-        if (newIdToken) {
-          token.accessToken = newIdToken
-          token.expires = Date.now() + 60 * 60 * 1000
-        }
+      if (Date.now() >= token.expires) {
+        const newIdToken = await refreshIdToken(token.refreshToken)
+        token.accessToken = newIdToken
+        token.expires = Date.now() + 60 * 60 * 1000
       }
       return token
     },

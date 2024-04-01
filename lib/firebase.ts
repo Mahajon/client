@@ -2,7 +2,7 @@
 
 import { getAnalytics } from "firebase/analytics"
 import { getApp, getApps, initializeApp } from "firebase/app"
-import { getAuth } from "firebase/auth"
+import { getAuth, onAuthStateChanged } from "firebase/auth"
 import { getFirestore } from "firebase/firestore"
 
 // TODO: Add SDKs for Firebase products that you want to use
