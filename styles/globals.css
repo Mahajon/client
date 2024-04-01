@@ -78,4 +78,16 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+  ::-moz-selection {
+    background: #202020;
+    color: #fff;
+  }
+  ::-webkit-selection {
+    background: #202020;
+    color: #fff;
+  }
+  ::selection {
+    background: #202020;
+    color: #fff;
+  }
 }
