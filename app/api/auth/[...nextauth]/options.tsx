@@ -131,8 +131,3 @@ export function getSession(
 ) {
   return getServerSession(...args, authOptions)
 }
-
-export const getToken = async () => {
-  const session = await getSession()
-  return session?.accessToken
-}
