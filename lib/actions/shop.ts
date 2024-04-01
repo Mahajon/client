@@ -2,11 +2,7 @@
 
 import { getServerSession } from "next-auth"
 
-import {
-  authOptions,
-  getSession,
-  getToken,
-} from "@/app/api/auth/[...nextauth]/options"
+import { getToken } from "@/lib/user"
 
 export const submitShopForm = async (formData: any) => {
   console.log(formData)
