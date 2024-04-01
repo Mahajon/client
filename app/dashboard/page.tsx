@@ -30,5 +30,5 @@ export default async function DashboardHome() {
       </div>
     )
   }
-  return null
+  return redirect("/")
 }

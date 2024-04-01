@@ -3,7 +3,11 @@
 import { count } from "console"
 import path from "path"
 import Link from "next/link"
-import { usePathname, useSelectedLayoutSegments } from "next/navigation"
+import {
+  useParams,
+  usePathname,
+  useSelectedLayoutSegments,
+} from "next/navigation"
 import {
   Bell,
   Check,
@@ -49,37 +53,37 @@ import Logo from "../logo"
 
 const Sidebar = () => {
   const pathname = usePathname()
+  const { slug } = useParams()
   const segments = useSelectedLayoutSegments()
   console.log(pathname, segments)
   let URLs = [
     {
-      name: "Dashboard",
-      url: "/dashboard",
+      name: "Overview",
+      url: `/dashboard/${slug}`,
       icon: <Home className="size-4" />,
       count: 0,
     },
-
     {
       name: "Products",
-      url: `/dashboard/${segments[0]}/products`,
+      url: `/dashboard/${slug}/products`,
       icon: <Package2 className="size-4" />,
       count: 0,
     },
     {
       name: "Orders",
-      url: `/dashboard/${segments[0]}/orders`,
+      url: `/dashboard/${slug}/orders`,
       icon: <ShoppingCart className="size-4" />,
       count: 0,
     },
     {
       name: "Customers",
-      url: `/dashboard/${segments[0]}/customers`,
+      url: `/dashboard/${slug}/customers`,
       icon: <Users className="size-4" />,
       count: 0,
     },
     {
       name: "Settings",
-      url: `/dashboard/${segments[0]}/settings`,
+      url: `/dashboard/${slug}/settings`,
       icon: <Settings className="size-4" />,
       count: 0,
     },
@@ -90,15 +94,18 @@ const Sidebar = () => {
   // }
 
   return (
-    <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+    <nav className="grid gap-y-1 items-start px-2 text-sm font-medium lg:px-4">
       {URLs.map((url) => (
         <Link
           key={url.url}
           href={url.url}
-          className={`flex items-center gap-3 rounded-lg px-3 py-2  transition-all hover:text-primary hover:bg-secondary ${
-            url.url != "/dashboard" && pathname.startsWith(url.url)
-              ? "bg-slate-600 text-white"
-              : "text-muted-foreground"
+          className={`flex items-center gap-3 rounded-lg px-3 py-2  transition-all  
+          ${
+            url.url == `/dashboard/${slug}` && pathname == url.url
+              ? "bg-gray-600 text-white"
+              : url.url != `/dashboard/${slug}` && pathname.startsWith(url.url)
+              ? "bg-gray-600 text-white"
+              : "text-primary hover:bg-gray-300  hover:text-primary"
           }`}
         >
           {url.icon}

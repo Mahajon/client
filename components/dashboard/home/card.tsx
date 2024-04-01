@@ -7,13 +7,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import Image from "next/image"
 
 export default function ShopCard(shopObj: any) {
   const shop = shopObj.shop
   return (
     <Card>
       <CardHeader className="flex flex-row items-center gap-4">
-        <img
+        <Image
           alt="Thumbnail"
           className="aspect-square object-cover rounded"
           height="48"

@@ -1,7 +1,7 @@
 "use client"
 
-import { AnySoaRecord } from "dns"
 import { FormEvent } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"

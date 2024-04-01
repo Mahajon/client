@@ -4,7 +4,7 @@ import { GeistMono } from "geist/font/mono"
 import { GeistSans } from "geist/font/sans"
 
 import { siteConfig } from "@/config/site"
-import { fontSans } from "@/lib/fonts"
+import { cal, fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
 import { SiteHeader } from "@/components/navigation/site-header"
@@ -42,15 +42,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html
         lang="en"
-        className={`${GeistSans.variable} ${GeistMono.variable}`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${cal.variable} ${fontMono.variable}`}
         suppressHydrationWarning
       >
         <head />
         <body
-          className={cn(
-            "min-h-screen bg-background font-geist antialiased",
-            fontSans.variable
-          )}
+          className={cn("min-h-screen bg-background font-geist antialiased")}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Providers>

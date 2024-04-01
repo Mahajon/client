@@ -60,7 +60,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
           <DropdownMenuItem>
             <Link
               href="/dashboard"
-              className="w-full h-full flex items-center justify-start"
+              className="size-full flex items-center justify-start"
             >
               <User className="mr-2 size-4" />
               <span>Dashboard</span>
