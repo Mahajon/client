@@ -82,7 +82,7 @@ export default function NewShopPage() {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name">
-                Shop Name<span className="font-bold text-red-500 ml-1">*</span>
+                Shop Name<span className="font-cal text-red-500 ml-1">*</span>
               </Label>
               <Input
                 id="name"
@@ -94,7 +94,7 @@ export default function NewShopPage() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="slug">
-                Shop Slug<span className="font-bold text-red-500 ml-1">*</span>
+                Shop Slug<span className="font-cal text-red-500 ml-1">*</span>
               </Label>
 
               <div className="mt-1 flex rounded-md">

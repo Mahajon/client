@@ -15,7 +15,7 @@ export default async function DashboardHome() {
         <DashboardHomeNavigation>
           <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
             <div className="w-full max-w-7xl mx-auto flex items-center py-4">
-              <h1 className="text-lg font-semibold md:text-2xl lg:text-3xl">
+              <h1 className="text-lg font-cal md:text-2xl lg:text-3xl">
                 My Shops
               </h1>
             </div>

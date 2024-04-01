@@ -5,11 +5,14 @@ import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Google } from "@/components/icons"
+
+import LoginBase from "./base"
 
 export default function LoginDialog() {
   return (
@@ -19,21 +22,13 @@ export default function LoginDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">Login</DialogTitle>
+          <DialogTitle className="text-2xl font-cal">Login</DialogTitle>
+          <DialogDescription>
+            Sign in to your account to continue.
+          </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
-          <Button
-            variant="outline"
-            onClick={() => {
-              signin("google")
-            }}
-          >
-            <div className="flex items-center justify-center gap-x-2">
-              <Google className="size-8" />
-              <span className="font-medium">Sign in With Google</span>
-            </div>
-          </Button>
-        </div>
+
+        <LoginBase />
       </DialogContent>
     </Dialog>
   )

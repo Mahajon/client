@@ -74,43 +74,17 @@ export function UserDropdownMenu({ user }: { user: any }) {
             <span>Billing</span>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <Settings className="mr-2 size-4" />
-            <span>Settings</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Keyboard className="mr-2 size-4" />
-            <span>Keyboard shortcuts</span>
+            <Link
+              href="/dashboard/settings"
+              className="size-full flex items-center justify-start"
+            >
+              <Settings className="mr-2 size-4" />
+              <span>Settings</span>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Users className="mr-2 size-4" />
-            <span>Team</span>
-          </DropdownMenuItem>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <UserPlus className="mr-2 size-4" />
-              <span>Invite users</span>
-            </DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <Mail className="mr-2 size-4" />
-                  <span>Email</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <MessageSquare className="mr-2 size-4" />
-                  <span>Message</span>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <PlusCircle className="mr-2 size-4" />
-                  <span>More...</span>
-                </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <UserPlus className="mr-2 size-4" />
@@ -152,24 +126,14 @@ export function UserDropdownMenu({ user }: { user: any }) {
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>
-            <Plus className="mr-2 size-4" />
-            <span>New Team</span>
-          </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          {/* <Github className="mr-2 size-4" /> */}
-          <span>GitHub</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
+
+        <DropdownMenuItem disabled>
           <LifeBuoy className="mr-2 size-4" />
           <span>Support</span>
         </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <Cloud className="mr-2 size-4" />
-          <span>API</span>
-        </DropdownMenuItem>
+
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => signOut()}>
           <LogOut className="mr-2 size-4" />

@@ -1,6 +1,7 @@
 import {
   GithubAuthProvider,
   GoogleAuthProvider,
+  createUserWithEmailAndPassword,
   getAuth,
   getRedirectResult,
   linkWithPopup,
@@ -75,4 +76,29 @@ const signin = async (provider: string) => {
   return
 }
 
-export { signin }
+const createAccount = async (
+  first_name: string,
+  last_name: string,
+  email: string,
+  password: string
+) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user
+      // create a user profile on backend
+
+      //get the user token
+      user.getIdToken().then((idToken) => {
+        signIn("credentials", {
+          idToken,
+          callbackUrl: "/",
+        })
+      })
+    })
+    .catch((error) => {
+      return false
+    })
+  return true
+}
+
+export { signin, createAccount }

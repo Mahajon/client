@@ -39,10 +39,10 @@ import UpgradeCard from "./upgradeCard"
 
 const DashboardSidebar = () => {
   return (
-    <div className="hidden border-r bg-gray-100 md:block">
+    <div className="hidden border-r bg-bg md:block">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex items-center justify-between gap-x-3 px-4 py-3">
-          <Link href="/" className="flex items-center gap-2 font-bold">
+          <Link href="/" className="flex items-center gap-2 font-cal">
             <Package2 className="size-5" />
           </Link>
           <Slash className="h-4 text-gray-600" />

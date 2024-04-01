@@ -102,10 +102,10 @@ const Sidebar = () => {
           className={`flex items-center gap-3 rounded-lg px-3 py-2  transition-all  
           ${
             url.url == `/dashboard/${slug}` && pathname == url.url
-              ? "bg-gray-600 text-white"
+              ? "bg-geist-300 text-geist-1000"
               : url.url != `/dashboard/${slug}` && pathname.startsWith(url.url)
-              ? "bg-gray-600 text-white"
-              : "text-primary hover:bg-gray-300  hover:text-primary"
+              ? "bg-geist-300 text-geist-1000"
+              : "text-primary hover:bg-geist-200  hover:text-geist-1000"
           }`}
         >
           {url.icon}

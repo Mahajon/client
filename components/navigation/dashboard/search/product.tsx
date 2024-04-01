@@ -6,7 +6,7 @@ export default function ProductSearch() {
   return (
     <form>
       <div className="relative">
-        <Search className="absolute left-2.5 top-2.5 size-4 text-muted-foreground" />
+        <Search className="absolute left-2.5 top-2.5 size-4 text-geist-900" />
         <Input
           type="search"
           placeholder="Search products..."
