@@ -2,7 +2,16 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { BookOpen } from "lucide-react"
+import {
+  BookOpen,
+  Building2,
+  MousePointerClick,
+  Package,
+  PenTool,
+  Recycle,
+  ScanBarcode,
+  TrendingUp,
+} from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import {
@@ -15,41 +24,36 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-const components: { title: string; href: string; description: string }[] = [
+const features: {
+  title: string
+  href: string
+  description: string
+  icon: React.ReactNode
+}[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
+    title: "Inventory Management",
+    href: "/features/inventory-management",
     description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+      "Manage your inventory with ease. Keep track of your products.",
+    icon: <Package className="size-5" />,
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    title: "One-Click E-commerce Builder",
+    href: "/features/ecommerce-builder",
+    description: "Build your online store in minutes. No coding required.",
+    icon: <MousePointerClick className="size-5" />,
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    title: "Analytics",
+    href: "/features/analytics",
+    description: "Get insights into your business with our analytics tools.",
+    icon: <TrendingUp className="size-5" />,
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    title: "Point Of Sale",
+    href: "/about",
+    description: "Read more about us and our goals.",
+    icon: <ScanBarcode className="size-5" />,
   },
 ]
 
@@ -60,45 +64,29 @@ const resources: {
   icon: React.ReactNode
 }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-    icon: <BookOpen className="size-5" />,
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
+    title: "Blog",
+    href: "/blog",
     description:
       "For sighted users to preview content available behind a link.",
+    icon: <PenTool className="size-5" />,
+  },
+  {
+    title: "Guides",
+    href: "/guides",
+    description: "Learn how to use our platform and get the most out of it.",
     icon: <BookOpen className="size-5" />,
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-    icon: <BookOpen className="size-5" />,
+    title: "Changelog",
+    href: "/changelog",
+    description: "See how we have evolved over time.",
+    icon: <Recycle className="size-5" />,
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-    icon: <BookOpen className="size-5" />,
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-    icon: <BookOpen className="size-5" />,
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-    icon: <BookOpen className="size-5" />,
+    title: "About",
+    href: "/about",
+    description: "Read more about us and our goals.",
+    icon: <Building2 className="size-5" />,
   },
 ]
 
@@ -144,14 +132,15 @@ export function NavigationMenuDemo() {
           <NavigationMenuTrigger>Features</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
+              {features.map((feature) => (
+                <IconListItem
+                  key={feature.title}
+                  title={feature.title}
+                  href={feature.href}
+                  icon={feature.icon}
                 >
-                  {component.description}
-                </ListItem>
+                  {feature.description}
+                </IconListItem>
               ))}
             </ul>
           </NavigationMenuContent>
@@ -228,7 +217,7 @@ const IconListItem = React.forwardRef<
           {...props}
         >
           <div className="text-geist-900">{icon}</div>
-          <div className="flex flex-col gap-y-1">
+          <div className="flex flex-col gap-y-2">
             <div className="text-sm text-geist-1000 font-medium leading-none">
               {title}
             </div>
