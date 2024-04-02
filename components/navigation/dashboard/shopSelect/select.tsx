@@ -23,6 +23,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
+import NewShopButton from "./newShopButton"
+
 export default function Select({ shops }: { shops: any[] }) {
   //extract shop id and convert to number
   const params = useParams()
@@ -37,7 +39,7 @@ export default function Select({ shops }: { shops: any[] }) {
           className="w-full flex items-center justify-between px-2"
         >
           <div className="flex items-center justify-start mr-2">
-            <Avatar className="rounded-full aspect-square py-2">
+            <Avatar className="rounded-full aspect-square p-2">
               {currentShop.logo ? (
                 <AvatarImage src={currentShop.logo} alt={currentShop.name} />
               ) : (
@@ -67,7 +69,7 @@ export default function Select({ shops }: { shops: any[] }) {
               className="w-full flex items-center justify-start font-medium"
             >
               <div className="flex items-center justify-start mr-2">
-                <Avatar className="rounded-full aspect-square py-2">
+                <Avatar className="rounded-full aspect-square p-2">
                   {currentShop.logo ? (
                     <AvatarImage
                       src={currentShop.logo}
@@ -85,6 +87,8 @@ export default function Select({ shops }: { shops: any[] }) {
             </Link>
           </DropdownMenuItem>
         ))}
+        <DropdownMenuSeparator />
+        <NewShopButton />
       </DropdownMenuContent>
     </DropdownMenu>
   )
