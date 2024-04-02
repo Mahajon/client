@@ -58,9 +58,11 @@ module.exports = {
           700: "hsl(var(--ds-gray-700))",
           800: "hsl(var(--ds-gray-800))",
           900: "hsl(var(--ds-gray-900))",
+          1000: "hsl(var(--ds-gray-1000))",
         },
         bg: {
           DEFAULT: "hsl(var(--ds-background-100))",
+          100: "hsl(var(--ds-background-100))",
           200: "hsl(var(--ds-background-200))",
         },
       },
