@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui/button"
-import Empty from "@/components/dashboard/products/list/empty"
+import { getProducts } from "@/lib/actions/product"
+import ProductListPage from "@/components/dashboard/products/list"
 
-export default async function Products() {
-  let products = []
-  if (products.length === 0) {
-    return <Empty />
-  }
-  return <></>
+export default async function ProductsIndex({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const products = await getProducts(params.slug)
+  return <ProductListPage products={products} />
 }

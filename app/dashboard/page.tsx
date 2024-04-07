@@ -2,10 +2,16 @@ import { redirect } from "next/navigation"
 
 import { getShopList } from "@/lib/actions/shop"
 import ShopCard from "@/components/dashboard/home/card"
+import NewShop from "@/components/dashboard/shop/new"
+import SomethingWentWrong from "@/components/error/something-went-wrong"
 import { DashboardHomeNavigation } from "@/components/navigation/dashboard/home"
 
 export default async function DashboardHome() {
   const shops = await getShopList()
+  if (shops.error) {
+    // return <Error statusCode={shops.status} />
+    return <SomethingWentWrong error={shops.error} />
+  }
   if (shops.length === 1) {
     redirect(`/dashboard/${shops[0].slug}`)
   }
@@ -30,5 +36,5 @@ export default async function DashboardHome() {
       </div>
     )
   }
-  return redirect("/")
+  return <NewShop />
 }

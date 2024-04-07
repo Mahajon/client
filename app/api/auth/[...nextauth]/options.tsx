@@ -97,6 +97,29 @@ export const authOptions: NextAuthOptions = {
       }
       return baseUrl
     },
+    async jwt({ token, user, account, profile }) {
+      if (user) {
+        token.refreshToken = user.refreshToken
+        token.role = user.role ?? "user"
+        token.email = user.email
+        token.name = user.name
+        token.image = user.picture
+        token.plan = user.plan ?? "free"
+        // token.expires = user.expires
+      }
+      if (token.expires) {
+        if (Date.now() >= token.expires) {
+          const newIdToken = await refreshIdToken(token.refreshToken)
+          token.accessToken = newIdToken
+          token.expires = Date.now() + 60 * 60 * 1000
+        } else {
+        }
+      } else {
+        token.accessToken = user.idToken
+        token.expires = user.expires
+      }
+      return token
+    },
     async session({ session, user, token }) {
       if (token) {
         session.user.role = token.role ?? "user"
@@ -107,24 +130,6 @@ export const authOptions: NextAuthOptions = {
         session.expires = token.expires
       }
       return session
-    },
-    async jwt({ token, user, account, profile }) {
-      if (user) {
-        token.accessToken = user.idToken
-        token.refreshToken = user.refreshToken
-        token.role = user.role ?? "user"
-        token.email = user.email
-        token.name = user.name
-        token.image = user.picture
-        token.plan = user.plan ?? "free"
-        token.expires = user.expires
-      }
-      if (Date.now() >= token.expires) {
-        const newIdToken = await refreshIdToken(token.refreshToken)
-        token.accessToken = newIdToken
-        token.expires = Date.now() + 60 * 60 * 1000
-      }
-      return token
     },
   },
 }
