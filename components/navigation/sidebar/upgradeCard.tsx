@@ -17,9 +17,7 @@ export default function UpgradeCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-        <Button size="sm" className="w-full">
-          Upgrade
-        </Button>
+        <Button className="w-full">Upgrade</Button>
       </CardContent>
     </Card>
   )

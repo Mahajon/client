@@ -23,7 +23,6 @@ export default function RegisterPage() {
   const handleRegister = async (e: any) => {
     e.preventDefault()
     setLoading(true)
-    console.log("Registering...")
     // const res = await createAccount(
     //   data.first_name,
     //   data.last_name,

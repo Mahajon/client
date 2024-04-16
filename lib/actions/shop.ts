@@ -9,7 +9,6 @@ import { getServerSession } from "next-auth"
 import { getToken } from "@/lib/user"
 
 export const submitShopForm = async (formData: any) => {
-  console.log(formData)
   const token = await getToken()
   const response = await fetch(`${process.env.API_BASE_URL}shops/create/`, {
     method: "POST",
@@ -19,7 +18,6 @@ export const submitShopForm = async (formData: any) => {
     },
   })
   const data = await response.json()
-  console.log(data)
   if (response.status === 201) {
     const path = `/dashboard/${formData.shop_slug}/products/${data.id}`
     revalidatePath(path)

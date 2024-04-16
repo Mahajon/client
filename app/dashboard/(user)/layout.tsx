@@ -36,7 +36,7 @@ export default function DashboardHomeNavigation({
                 className="flex items-center justify-start gap-x-2 font-cal"
               >
                 <Package2 className="" />
-                <span className="font-cal ">Dokan</span>
+                <span className="font-cal ">Mahajon</span>
               </Link>
             </div>
             <div className="flex items-center justify-start gap-x-2">

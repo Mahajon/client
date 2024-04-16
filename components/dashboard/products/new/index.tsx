@@ -89,7 +89,7 @@ export default function CreateNewProduct() {
                   value={slug}
                 />
               </div>
-              <div id="error" className="text-xs font-bold text-red-700"></div>
+              <div id="error" className="text-xs font-cal text-red-700"></div>
             </div>
           </AlertDialogHeader>
           <AlertDialogFooter>

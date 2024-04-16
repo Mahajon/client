@@ -80,7 +80,7 @@ export default function Dashboard() {
                 <ChevronLeft className="h-4 w-4" />
                 <span className="sr-only">Back</span>
               </Button>
-              <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
+              <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-cal tracking-tight sm:grow-0">
                 Pro Controller
               </h1>
               <Badge variant="outline" className="ml-auto sm:ml-0">
@@ -143,9 +143,7 @@ export default function Dashboard() {
                       </TableHeader>
                       <TableBody>
                         <TableRow>
-                          <TableCell className="font-semibold">
-                            GGPC-001
-                          </TableCell>
+                          <TableCell className="font-cal">GGPC-001</TableCell>
                           <TableCell>
                             <Label htmlFor="stock-1" className="sr-only">
                               Stock
@@ -179,9 +177,7 @@ export default function Dashboard() {
                           </TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableCell className="font-semibold">
-                            GGPC-002
-                          </TableCell>
+                          <TableCell className="font-cal">GGPC-002</TableCell>
                           <TableCell>
                             <Label htmlFor="stock-2" className="sr-only">
                               Stock
@@ -215,9 +211,7 @@ export default function Dashboard() {
                           </TableCell>
                         </TableRow>
                         <TableRow>
-                          <TableCell className="font-semibold">
-                            GGPC-003
-                          </TableCell>
+                          <TableCell className="font-cal">GGPC-003</TableCell>
                           <TableCell>
                             <Label htmlFor="stock-3" className="sr-only">
                               Stock

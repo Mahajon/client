@@ -108,7 +108,7 @@ export function NavigationMenuDemo() {
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>
-                    <p className="text-sm leading-tight text-geist-900">
+                    <p className="text-sm leading-tight text-muted-foregound">
                       Beautifully designed components that you can copy and
                       paste into your apps. Accessible. Customizable. Open
                       Source.
@@ -185,13 +185,13 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-muted-foreground focus:bg-muted focus:text-muted-foreground",
             className
           )}
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-geist-900">
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foregound">
             {children}
           </p>
         </a>
@@ -211,17 +211,17 @@ const IconListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "flex items-center gap-x-4 select-none  rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "flex items-center gap-x-4 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-muted-foreground focus:bg-muted focus:text-muted-foreground",
             className
           )}
           {...props}
         >
-          <div className="text-geist-900">{icon}</div>
+          <div className="text-muted-foregound">{icon}</div>
           <div className="flex flex-col gap-y-2">
-            <div className="text-sm text-geist-1000 font-medium leading-none">
+            <div className="text-sm text-foreground font-medium leading-none">
               {title}
             </div>
-            <p className="line-clamp-2 text-sm leading-snug text-geist-900">
+            <p className="line-clamp-2 text-sm leading-snug text-muted-foregound">
               {children}
             </p>
           </div>

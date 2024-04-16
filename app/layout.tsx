@@ -48,7 +48,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-geist antialiased relative"
+            "min-h-screen bg-primary font-geist antialiased relative"
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

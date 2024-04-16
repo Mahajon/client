@@ -1,7 +1,7 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Dokan",
+  name: "Mahajon",
   description: "All-in-one platform for your f-commerce business.",
   mainNav: [
     {

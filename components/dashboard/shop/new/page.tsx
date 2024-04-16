@@ -88,7 +88,7 @@ export default function NewShopPage() {
                 id="name"
                 name="name"
                 type="text"
-                placeholder="Dokan"
+                placeholder="Mahajon"
                 required
               />
             </div>
@@ -106,7 +106,7 @@ export default function NewShopPage() {
                   placeholder="shopname"
                 />
                 <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
-                  .dokan.app
+                  .mahajon.app
                 </span>
               </div>
             </div>

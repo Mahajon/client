@@ -21,7 +21,7 @@ export default function NewShopButton() {
           disabled
         >
           Create Shop{" "}
-          <span className="bg-bg text-geist-1000 text-xs px-2 py-1 rounded-full">
+          <span className="bg-accent text-geist-1000 text-xs px-2 py-1 rounded-full">
             Coming Soon
           </span>
         </Button>

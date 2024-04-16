@@ -55,41 +55,49 @@ export default async function Dashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-geist-900" />
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-cal">$45,231.89</div>
-            <p className="text-xs text-geist-900">+20.1% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +20.1% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Subscriptions</CardTitle>
-            <Users className="h-4 w-4 text-geist-900" />
+            <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-cal">+2350</div>
-            <p className="text-xs text-geist-900">+180.1% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +180.1% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Sales</CardTitle>
-            <CreditCard className="h-4 w-4 text-geist-900" />
+            <CreditCard className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-cal">+12,234</div>
-            <p className="text-xs text-geist-900">+19% from last month</p>
+            <p className="text-xs text-muted-foreground">
+              +19% from last month
+            </p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Active Now</CardTitle>
-            <Activity className="h-4 w-4 text-geist-900" />
+            <Activity className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-cal">+573</div>
-            <p className="text-xs text-geist-900">+201 since last hour</p>
+            <p className="text-xs text-muted-foreground">
+              +201 since last hour
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -126,7 +134,7 @@ export default async function Dashboard({
                 <TableRow>
                   <TableCell>
                     <div className="font-cal">Liam Johnson</div>
-                    <div className="hidden text-sm text-geist-900 md:inline">
+                    <div className="hidden text-sm text-muted-foreground md:inline">
                       liam@example.com
                     </div>
                   </TableCell>
@@ -144,7 +152,7 @@ export default async function Dashboard({
                 <TableRow>
                   <TableCell>
                     <div className="font-cal">Olivia Smith</div>
-                    <div className="hidden text-sm text-geist-900 md:inline">
+                    <div className="hidden text-sm text-muted-foreground md:inline">
                       olivia@example.com
                     </div>
                   </TableCell>
@@ -164,7 +172,7 @@ export default async function Dashboard({
                 <TableRow>
                   <TableCell>
                     <div className="font-cal">Noah Williams</div>
-                    <div className="hidden text-sm text-geist-900 md:inline">
+                    <div className="hidden text-sm text-muted-foreground md:inline">
                       noah@example.com
                     </div>
                   </TableCell>
@@ -184,7 +192,7 @@ export default async function Dashboard({
                 <TableRow>
                   <TableCell>
                     <div className="font-cal">Emma Brown</div>
-                    <div className="hidden text-sm text-geist-900 md:inline">
+                    <div className="hidden text-sm text-muted-foreground md:inline">
                       emma@example.com
                     </div>
                   </TableCell>
@@ -202,7 +210,7 @@ export default async function Dashboard({
                 <TableRow>
                   <TableCell>
                     <div className="font-cal">Liam Johnson</div>
-                    <div className="hidden text-sm text-geist-900 md:inline">
+                    <div className="hidden text-sm text-muted-foreground md:inline">
                       liam@example.com
                     </div>
                   </TableCell>
@@ -233,7 +241,7 @@ export default async function Dashboard({
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-cal leading-none">Olivia Martin</p>
-                <p className="text-sm text-geist-900">
+                <p className="text-sm text-muted-foreground">
                   olivia.martin@email.com
                 </p>
               </div>
@@ -246,7 +254,9 @@ export default async function Dashboard({
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-cal leading-none">Jackson Lee</p>
-                <p className="text-sm text-geist-900">jackson.lee@email.com</p>
+                <p className="text-sm text-muted-foreground">
+                  jackson.lee@email.com
+                </p>
               </div>
               <div className="ml-auto font-cal">+$39.00</div>
             </div>
@@ -257,7 +267,7 @@ export default async function Dashboard({
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-cal leading-none">Isabella Nguyen</p>
-                <p className="text-sm text-geist-900">
+                <p className="text-sm text-muted-foreground">
                   isabella.nguyen@email.com
                 </p>
               </div>
@@ -270,7 +280,7 @@ export default async function Dashboard({
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-cal leading-none">William Kim</p>
-                <p className="text-sm text-geist-900">will@email.com</p>
+                <p className="text-sm text-muted-foreground">will@email.com</p>
               </div>
               <div className="ml-auto font-cal">+$99.00</div>
             </div>
@@ -281,7 +291,9 @@ export default async function Dashboard({
               </Avatar>
               <div className="grid gap-1">
                 <p className="text-sm font-cal leading-none">Sofia Davis</p>
-                <p className="text-sm text-geist-900">sofia.davis@email.com</p>
+                <p className="text-sm text-muted-foreground">
+                  sofia.davis@email.com
+                </p>
               </div>
               <div className="ml-auto font-cal">+$39.00</div>
             </div>

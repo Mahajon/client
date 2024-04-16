@@ -8,8 +8,8 @@ import Subnav from "./subnav"
 
 export default function DashboardHeader() {
   return (
-    <div className="sticky top-0">
-      <header className="flex h-14 items-center gap-4 border-b bg-bg px-4 lg:h-[60px] lg:px-6">
+    <div className="sticky top-0 bg-background">
+      <header className="flex h-14 items-center gap-4 border-b px-4 lg:h-[60px] lg:px-6">
         <div className="size-full flex-1">
           <Subnav />
         </div>

@@ -68,7 +68,7 @@ export default function ProductTable<TData, TValue>({
         />
         <CreateNewProduct />
       </div>
-      <div className="rounded-md border bg-bg-100">
+      <div className="rounded-md border bg-background">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
