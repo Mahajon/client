@@ -18,11 +18,11 @@ export default function Navbar({
           className={`h-full flex flex-col justify-center items-center group border-b-2 ${
             pathList[3] === url.url.split("/")[1] &&
             pathList[4] === url.url.split("/")[2]
-              ? " border-primary text-primary"
-              : "text-muted-foreground"
+              ? " border-accent text-foreground"
+              : "text-muted-foreground border-transparent"
           }`}
         >
-          <span className="px-4 py-2 rounded-lg group-hover:bg-muted group-hover:text-primary">
+          <span className="px-4 py-2 rounded-lg group-hover:bg-muted group-hover:text-muted-foreground">
             {url.name}
           </span>
         </Link>

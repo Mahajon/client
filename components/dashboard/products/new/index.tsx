@@ -42,11 +42,7 @@ export default function CreateNewProduct() {
     const formData = new FormData(event.currentTarget)
     const shop = await getShopDetails(params.slug as string)
     formData.append("shop", shop.id)
-    const response = await createProduct(
-      formData,
-      params.slug as string,
-      shop.id as number
-    )
+    const response = await createProduct(formData, params.slug as string)
     if (response.error) {
       console.error(response.error)
       const errorDiv = document.getElementById("error")

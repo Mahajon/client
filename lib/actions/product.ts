@@ -6,24 +6,17 @@ import { redirect } from "next/navigation"
 import { getToken, getUser } from "../user"
 import { getShopDetails } from "./shop"
 
-export const createProduct = async (
-  formData: any,
-  shopSlug: string,
-  shopId: number
-) => {
+export const createProduct = async (formData: any, shopSlug: string) => {
   let data: any
   try {
     const token = await getToken()
-    const response = await fetch(
-      `${process.env.API_BASE_URL}products/${shopId}/`,
-      {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    const response = await fetch(`${process.env.API_BASE_URL}products/`, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     data = await response.json()
     if (response.status === 201) {
     } else if (response.status === 401) {
@@ -40,14 +33,14 @@ export const createProduct = async (
   redirect(`/dashboard/${shopSlug}/products/${data.id}`)
 }
 
-export const getProducts = async (shopSlug: string) => {
+export const getProducts = async (params: string) => {
   let data: any
   // const shop = await getShopDetails(shopSlug)
   const shop = { id: 3 }
   try {
     const token = await getToken()
     const response = await fetch(
-      `${process.env.API_BASE_URL}products/${shop.id}/`,
+      `${process.env.API_BASE_URL}products/?${params}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
