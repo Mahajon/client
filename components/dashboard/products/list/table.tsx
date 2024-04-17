@@ -18,7 +18,7 @@ export default function ProductTable({
   products: any[]
 }) {
   return (
-    <Table className="bg-secondary rounded-md shadow border">
+    <Table className="rounded-md border bg-secondary shadow">
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">ID</TableHead>
@@ -34,7 +34,7 @@ export default function ProductTable({
             <TableCell>{product.name}</TableCell>
             <TableCell>{product.stock}</TableCell>
             <TableCell className="text-right">{product.price}</TableCell>
-            <TableCell className="text-right p-0">
+            <TableCell className="p-0 text-right">
               <ActionButton slug={slug} id={product.id} />
             </TableCell>
           </TableRow>

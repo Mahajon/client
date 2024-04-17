@@ -39,7 +39,7 @@ import UpgradeCard from "./upgradeCard"
 
 const DashboardSidebar = () => {
   return (
-    <div className="relative hidden border-r t md:block bg-background">
+    <div className="t relative hidden border-r bg-background md:block">
       <div className="sticky top-0 flex h-full max-h-screen flex-col gap-2">
         <div className="flex items-center justify-between gap-x-3 px-4 py-3">
           <Link href="/" className="flex items-center gap-2 font-cal">

@@ -44,8 +44,8 @@ export default function RegisterPage() {
   return (
     <div className="mx-auto grid w-[450px] gap-6">
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-cal">Create Account</h1>
-        <p className="text-balance text-geist-900">
+        <h1 className="font-cal text-3xl">Create Account</h1>
+        <p className="text-geist-900 text-balance">
           Create a new account to get started
         </p>
       </div>
@@ -116,7 +116,7 @@ export default function RegisterPage() {
         </div>
         <Button
           type="submit"
-          className="w-full flex items-center justify-center gap-2"
+          className="flex w-full items-center justify-center gap-2"
           {...(loading && { disabled: true })}
         >
           {loading && <LoadingCircle />}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
           onClick={() => signin("google")}
           {...(loading && { disabled: true })}
         >
-          <Google className="size-5 mr-2" />
+          <Google className="mr-2 size-5" />
           Login with Google
         </Button>
         <Button
@@ -137,7 +137,7 @@ export default function RegisterPage() {
           onClick={() => signin("github")}
           {...(loading && { disabled: true })}
         >
-          <Github className="size-5 mr-2" />
+          <Github className="mr-2 size-5" />
           Login with Github
         </Button>
       </form>

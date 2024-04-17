@@ -70,7 +70,7 @@ export default function NewShopPage() {
     }
   }
   return (
-    <Card className="mx-auto min-w-2xl">
+    <Card className="min-w-2xl mx-auto">
       <CardHeader>
         <CardTitle className="text-2xl">Create A Shop</CardTitle>
         <CardDescription>
@@ -82,7 +82,7 @@ export default function NewShopPage() {
           <div className="grid gap-4">
             <div className="grid gap-2">
               <Label htmlFor="name">
-                Shop Name<span className="font-cal text-red-500 ml-1">*</span>
+                Shop Name<span className="ml-1 font-cal text-red-500">*</span>
               </Label>
               <Input
                 id="name"
@@ -94,7 +94,7 @@ export default function NewShopPage() {
             </div>
             <div className="grid gap-2">
               <Label htmlFor="slug">
-                Shop Slug<span className="font-cal text-red-500 ml-1">*</span>
+                Shop Slug<span className="ml-1 font-cal text-red-500">*</span>
               </Label>
 
               <div className="mt-1 flex rounded-md">
@@ -102,10 +102,10 @@ export default function NewShopPage() {
                   type="text"
                   name="slug"
                   id="slug"
-                  className="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-l-md  sm:text-sm "
+                  className="block w-full min-w-0 flex-1 rounded-none rounded-l-md px-3 py-2  sm:text-sm "
                   placeholder="shopname"
                 />
-                <span className="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+                <span className="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
                   .mahajon.app
                 </span>
               </div>
@@ -137,7 +137,7 @@ export default function NewShopPage() {
                 </div>
                 <div
                   id="logo-preview"
-                  className="relative h-full max-h-20 aspect-square flex flex-col justify-center items-center"
+                  className="relative flex aspect-square h-full max-h-20 flex-col items-center justify-center"
                 >
                   <img
                     src="https://placehold.co/100"

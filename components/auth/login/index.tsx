@@ -22,7 +22,7 @@ export default function LoginDialog() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-cal">Login</DialogTitle>
+          <DialogTitle className="font-cal text-2xl">Login</DialogTitle>
           <DialogDescription>
             Sign in to your account to continue.
           </DialogDescription>

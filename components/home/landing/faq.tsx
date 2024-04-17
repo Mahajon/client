@@ -14,7 +14,8 @@ import UndrawQuestions from "./undraw_questions.svg"
 const faqdata = [
   {
     question: "Is Mahajon compatible with my existing website?",
-    answer: "No, Mahajon currently doesn't support third party integrations.",
+    answer:
+      "No, Mahajon currently doesn&apos;t support third party integrations.",
   },
   {
     question: "How does Mahajon ensure the security of my data?",
@@ -48,12 +49,12 @@ export default function FAQSection() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col justify-center space-y-4">
           <div className="space-y-2">
-            <h2 className="text-3xl font-cal sm:text-5xl">
+            <h2 className="font-cal text-3xl sm:text-5xl">
               Frequently Asked Questions
             </h2>
           </div>
         </div>
-        <div className="mt-4 lg:mt-8 grid gap-6 md:grid-cols-3 xl:gap-12">
+        <div className="mt-4 grid gap-6 md:grid-cols-3 lg:mt-8 xl:gap-12">
           <div className="col-span-2">
             <Accordion type="single" collapsible className="w-full">
               {faqdata.map((faq, index) => (
@@ -64,10 +65,10 @@ export default function FAQSection() {
               ))}
             </Accordion>
           </div>
-          <div className="hidden md:flex flex-col items-center justify-start">
+          <div className="hidden flex-col items-center justify-start md:flex">
             <Image
               alt="Illustration"
-              className="object-cover rounded-lg"
+              className="rounded-lg object-cover"
               src={UndrawQuestions}
             />
           </div>

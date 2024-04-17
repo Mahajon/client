@@ -36,10 +36,10 @@ export default function Select({ shops }: { shops: any[] }) {
       <DropdownMenuTrigger asChild className="cursor-pointer">
         <Button
           variant="outline"
-          className="w-full flex items-center justify-between px-2"
+          className="flex w-full items-center justify-between px-2"
         >
-          <div className="flex items-center justify-start mr-2">
-            <Avatar className="rounded-full aspect-square p-2">
+          <div className="mr-2 flex items-center justify-start">
+            <Avatar className="aspect-square rounded-full p-2">
               {currentShop.logo ? (
                 <AvatarImage src={currentShop.logo} alt={currentShop.name} />
               ) : (
@@ -66,10 +66,10 @@ export default function Select({ shops }: { shops: any[] }) {
           >
             <Link
               href={`/dashboard/${shop.slug}`}
-              className="w-full flex items-center justify-start font-medium"
+              className="flex w-full items-center justify-start font-medium"
             >
-              <div className="flex items-center justify-start mr-2">
-                <Avatar className="rounded-full aspect-square p-2">
+              <div className="mr-2 flex items-center justify-start">
+                <Avatar className="aspect-square rounded-full p-2">
                   {currentShop.logo ? (
                     <AvatarImage
                       src={currentShop.logo}
@@ -83,7 +83,7 @@ export default function Select({ shops }: { shops: any[] }) {
                 </Avatar>
                 <span className="">{currentShop.name}</span>
               </div>
-              {slug === shop.slug && <Check className="size-4 ml-auto" />}
+              {slug === shop.slug && <Check className="ml-auto size-4" />}
             </Link>
           </DropdownMenuItem>
         ))}

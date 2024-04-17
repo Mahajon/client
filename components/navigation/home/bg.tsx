@@ -21,7 +21,7 @@ export default function Background({
     <header
       ref={ref}
       className={`sticky top-0 z-40 w-full  ${
-        isIntersecting ? "bg-background border-b" : "bg-transparent"
+        isIntersecting ? "border-b bg-background" : "bg-transparent"
       }`}
     >
       {children}

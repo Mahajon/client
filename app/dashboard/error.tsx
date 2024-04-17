@@ -19,7 +19,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="h-screen w-screen flex flex-col gap-4 items-center justify-center">
+    <div className="flex h-screen w-screen flex-col items-center justify-center gap-4">
       <h2 className="font-cal text-2xl">Something went wrong!</h2>
       <div className="flex flex-row items-center justify-center gap-x-3">
         <Button

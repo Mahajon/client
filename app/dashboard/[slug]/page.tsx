@@ -55,10 +55,10 @@ export default async function Dashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Total Revenue</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <DollarSign className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-cal">$45,231.89</div>
+            <div className="font-cal text-2xl">$45,231.89</div>
             <p className="text-xs text-muted-foreground">
               +20.1% from last month
             </p>
@@ -67,10 +67,10 @@ export default async function Dashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Subscriptions</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-cal">+2350</div>
+            <div className="font-cal text-2xl">+2350</div>
             <p className="text-xs text-muted-foreground">
               +180.1% from last month
             </p>
@@ -79,10 +79,10 @@ export default async function Dashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Sales</CardTitle>
-            <CreditCard className="h-4 w-4 text-muted-foreground" />
+            <CreditCard className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-cal">+12,234</div>
+            <div className="font-cal text-2xl">+12,234</div>
             <p className="text-xs text-muted-foreground">
               +19% from last month
             </p>
@@ -91,10 +91,10 @@ export default async function Dashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-cal">Active Now</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+            <Activity className="size-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-cal">+573</div>
+            <div className="font-cal text-2xl">+573</div>
             <p className="text-xs text-muted-foreground">
               +201 since last hour
             </p>
@@ -113,7 +113,7 @@ export default async function Dashboard({
             <Button asChild size="sm" className="ml-auto gap-1">
               <Link href="#">
                 View All
-                <ArrowUpRight className="h-4 w-4" />
+                <ArrowUpRight className="size-4" />
               </Link>
             </Button>
           </CardHeader>
@@ -235,12 +235,12 @@ export default async function Dashboard({
           </CardHeader>
           <CardContent className="grid gap-8">
             <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarImage src="/avatars/01.png" alt="Avatar" />
                 <AvatarFallback>OM</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-cal leading-none">Olivia Martin</p>
+                <p className="font-cal text-sm leading-none">Olivia Martin</p>
                 <p className="text-sm text-muted-foreground">
                   olivia.martin@email.com
                 </p>
@@ -248,12 +248,12 @@ export default async function Dashboard({
               <div className="ml-auto font-cal">+$1,999.00</div>
             </div>
             <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarImage src="/avatars/02.png" alt="Avatar" />
                 <AvatarFallback>JL</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-cal leading-none">Jackson Lee</p>
+                <p className="font-cal text-sm leading-none">Jackson Lee</p>
                 <p className="text-sm text-muted-foreground">
                   jackson.lee@email.com
                 </p>
@@ -261,12 +261,12 @@ export default async function Dashboard({
               <div className="ml-auto font-cal">+$39.00</div>
             </div>
             <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarImage src="/avatars/03.png" alt="Avatar" />
                 <AvatarFallback>IN</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-cal leading-none">Isabella Nguyen</p>
+                <p className="font-cal text-sm leading-none">Isabella Nguyen</p>
                 <p className="text-sm text-muted-foreground">
                   isabella.nguyen@email.com
                 </p>
@@ -274,23 +274,23 @@ export default async function Dashboard({
               <div className="ml-auto font-cal">+$299.00</div>
             </div>
             <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarImage src="/avatars/04.png" alt="Avatar" />
                 <AvatarFallback>WK</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-cal leading-none">William Kim</p>
+                <p className="font-cal text-sm leading-none">William Kim</p>
                 <p className="text-sm text-muted-foreground">will@email.com</p>
               </div>
               <div className="ml-auto font-cal">+$99.00</div>
             </div>
             <div className="flex items-center gap-4">
-              <Avatar className="hidden h-9 w-9 sm:flex">
+              <Avatar className="hidden size-9 sm:flex">
                 <AvatarImage src="/avatars/05.png" alt="Avatar" />
                 <AvatarFallback>SD</AvatarFallback>
               </Avatar>
               <div className="grid gap-1">
-                <p className="text-sm font-cal leading-none">Sofia Davis</p>
+                <p className="font-cal text-sm leading-none">Sofia Davis</p>
                 <p className="text-sm text-muted-foreground">
                   sofia.davis@email.com
                 </p>

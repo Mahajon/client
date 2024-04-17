@@ -28,7 +28,7 @@ export default function DashboardHomeNavigation({
   return (
     <div className=" min-h-screen w-full ">
       <div className="flex flex-col">
-        <header className="w-full flex h-14 items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 w-full items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <div className="flex items-center gap-x-8">
             <div className="w-full flex-1">
               <Link
@@ -44,7 +44,7 @@ export default function DashboardHomeNavigation({
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="text-geist-900 hover:bg-geist-200 hover:text-geist-1000 active:bg-geist-200 px-4 py-2 text-sm rounded-xl"
+                  className="text-geist-900 hover:bg-geist-200 hover:text-geist-1000 active:bg-geist-200 rounded-xl px-4 py-2 text-sm"
                 >
                   {link.title}
                 </Link>

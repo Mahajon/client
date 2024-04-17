@@ -6,9 +6,9 @@ interface RootLayoutProps {
 }
 const DashboardNav = ({ children }: RootLayoutProps) => {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] relative">
+    <div className="relative grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
       <DashboardSidebar />
-      <div className="flex flex-col  relative">
+      <div className="relative flex  flex-col">
         <DashboardHeader /> {children}
       </div>
     </div>

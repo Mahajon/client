@@ -101,14 +101,14 @@ export function NavigationMenuDemo() {
               <li className="row-span-3">
                 <NavigationMenuLink asChild>
                   <a
-                    className="flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-geist-100/50 to-geist-100 p-6 no-underline outline-none focus:shadow-md"
+                    className="from-geist-100/50 to-geist-100 flex size-full select-none flex-col justify-end rounded-md bg-gradient-to-b p-6 no-underline outline-none focus:shadow-md"
                     href="/"
                   >
                     {/* <Logo className="size-6" /> */}
                     <div className="mb-2 mt-4 text-lg font-medium">
                       shadcn/ui
                     </div>
-                    <p className="text-sm leading-tight text-muted-foregound">
+                    <p className="text-muted-foregound text-sm leading-tight">
                       Beautifully designed components that you can copy and
                       paste into your apps. Accessible. Customizable. Open
                       Source.
@@ -191,7 +191,7 @@ const ListItem = React.forwardRef<
           {...props}
         >
           <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foregound">
+          <p className="text-muted-foregound line-clamp-2 text-sm leading-snug">
             {children}
           </p>
         </a>
@@ -211,17 +211,17 @@ const IconListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            "flex items-center gap-x-4 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-muted-foreground focus:bg-muted focus:text-muted-foreground",
+            "flex select-none items-center gap-x-4 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-muted-foreground focus:bg-muted focus:text-muted-foreground",
             className
           )}
           {...props}
         >
           <div className="text-muted-foregound">{icon}</div>
           <div className="flex flex-col gap-y-2">
-            <div className="text-sm text-foreground font-medium leading-none">
+            <div className="text-sm font-medium leading-none text-foreground">
               {title}
             </div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foregound">
+            <p className="text-muted-foregound line-clamp-2 text-sm leading-snug">
               {children}
             </p>
           </div>

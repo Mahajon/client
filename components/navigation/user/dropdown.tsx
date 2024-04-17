@@ -50,7 +50,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer size-10">
+        <Avatar className="size-10 cursor-pointer">
           <AvatarImage src={user.image} alt="user" />
           <AvatarFallback>{user.name[0]}</AvatarFallback>
         </Avatar>
@@ -62,7 +62,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
           <DropdownMenuItem>
             <Link
               href="/dashboard"
-              className="size-full flex items-center justify-start"
+              className="flex size-full items-center justify-start"
             >
               <User className="mr-2 size-4" />
               <span>Dashboard</span>
@@ -76,7 +76,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
           <DropdownMenuItem>
             <Link
               href="/dashboard/settings"
-              className="size-full flex items-center justify-start"
+              className="flex size-full items-center justify-start"
             >
               <Settings className="mr-2 size-4" />
               <span>Settings</span>
@@ -100,7 +100,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
                     <Monitor className="mr-2 size-4" />
                     <span>System</span>
                   </div>
-                  {theme === "system" && <Check className="size-4 ml-2" />}
+                  {theme === "system" && <Check className="ml-2 size-4" />}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="flex items-center justify-between"
@@ -110,7 +110,7 @@ export function UserDropdownMenu({ user }: { user: any }) {
                     <Sun className="mr-2 size-4" />
                     <span>Light</span>
                   </div>
-                  {theme === "light" && <Check className="size-4 ml-2" />}
+                  {theme === "light" && <Check className="ml-2 size-4" />}
                 </DropdownMenuItem>
 
                 <DropdownMenuItem

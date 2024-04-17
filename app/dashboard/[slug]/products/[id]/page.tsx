@@ -76,11 +76,11 @@ export default function Dashboard() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
             <div className="flex items-center gap-4">
-              <Button variant="outline" size="icon" className="h-7 w-7">
-                <ChevronLeft className="h-4 w-4" />
+              <Button variant="outline" size="icon" className="size-7">
+                <ChevronLeft className="size-4" />
                 <span className="sr-only">Back</span>
               </Button>
-              <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-cal tracking-tight sm:grow-0">
+              <h1 className="flex-1 shrink-0 whitespace-nowrap font-cal text-xl tracking-tight sm:grow-0">
                 Pro Controller
               </h1>
               <Badge variant="outline" className="ml-auto sm:ml-0">
@@ -249,7 +249,7 @@ export default function Dashboard() {
                   </CardContent>
                   <CardFooter className="justify-center border-t p-4">
                     <Button size="sm" variant="ghost" className="gap-1">
-                      <PlusCircle className="h-3.5 w-3.5" />
+                      <PlusCircle className="size-3.5" />
                       Add Variant
                     </Button>
                   </CardFooter>
@@ -363,7 +363,7 @@ export default function Dashboard() {
                           />
                         </button>
                         <button className="flex aspect-square w-full items-center justify-center rounded-md border border-dashed">
-                          <Upload className="h-4 w-4 text-muted-foreground" />
+                          <Upload className="size-4 text-muted-foreground" />
                           <span className="sr-only">Upload</span>
                         </button>
                       </div>

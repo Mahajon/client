@@ -13,8 +13,8 @@ export default function LoginPage() {
   return (
     <div className="mx-auto grid w-[350px] gap-6">
       <div className="grid gap-2 text-center">
-        <h1 className="text-3xl font-cal">Login</h1>
-        <p className="text-balance text-geist-900">
+        <h1 className="font-cal text-3xl">Login</h1>
+        <p className="text-geist-900 text-balance">
           Enter your email below to login to your account
         </p>
       </div>
@@ -43,7 +43,7 @@ export default function LoginPage() {
           className="w-full"
           onClick={() => signin("google")}
         >
-          <Google className="size-5 mr-2" />
+          <Google className="mr-2 size-5" />
           Login with Google
         </Button>
         <Button
@@ -51,7 +51,7 @@ export default function LoginPage() {
           className="w-full"
           onClick={() => signin("github")}
         >
-          <Github className="size-5 mr-2" />
+          <Github className="mr-2 size-5" />
           Login with Github
         </Button>
       </div>

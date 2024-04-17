@@ -8,7 +8,7 @@ export default function AuthLayout({ children }: RootLayoutProps) {
   return (
     <>
       {" "}
-      <div className="w-full lg:grid min-h-screen  lg:grid-cols-2 ">
+      <div className="min-h-screen w-full lg:grid  lg:grid-cols-2 ">
         <div className="flex items-center justify-center py-12">{children}</div>
         <div className="hidden bg-muted lg:block">
           <Image

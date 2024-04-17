@@ -10,19 +10,19 @@ export default function Navbar({
   urlList: { name: string; url: string }[]
 }) {
   return (
-    <div className="h-full flex items-center justify-start text-sm">
+    <div className="flex h-full items-center justify-start text-sm">
       {urlList.map((url) => (
         <Link
           key={url.url}
           href={`/dashboard/${slug}${url.url}`}
-          className={`h-full flex flex-col justify-center items-center group border-b-2 ${
+          className={`group flex h-full flex-col items-center justify-center border-b-2 ${
             pathList[3] === url.url.split("/")[1] &&
             pathList[4] === url.url.split("/")[2]
               ? " border-accent text-foreground"
-              : "text-muted-foreground border-transparent"
+              : "border-transparent text-muted-foreground"
           }`}
         >
-          <span className="px-4 py-2 rounded-lg group-hover:bg-muted group-hover:text-muted-foreground">
+          <span className="rounded-lg px-4 py-2 group-hover:bg-muted group-hover:text-muted-foreground">
             {url.name}
           </span>
         </Link>

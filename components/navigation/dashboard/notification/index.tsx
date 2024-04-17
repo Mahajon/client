@@ -61,7 +61,7 @@ export default function NotificationDropdown() {
           <DropdownMenuItem>
             <Link
               href="/dashboard"
-              className="size-full flex items-center justify-start"
+              className="flex size-full items-center justify-start"
             >
               <User className="mr-2 size-4" />
               <span>Dashboard</span>
@@ -125,7 +125,7 @@ export default function NotificationDropdown() {
                     <Monitor className="mr-2 size-4" />
                     <span>System</span>
                   </div>
-                  {theme === "system" && <Check className="size-4 ml-2" />}
+                  {theme === "system" && <Check className="ml-2 size-4" />}
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="flex items-center justify-between"
@@ -135,7 +135,7 @@ export default function NotificationDropdown() {
                     <Sun className="mr-2 size-4" />
                     <span>Light</span>
                   </div>
-                  {theme === "light" && <Check className="size-4 ml-2" />}
+                  {theme === "light" && <Check className="ml-2 size-4" />}
                 </DropdownMenuItem>
 
                 <DropdownMenuItem

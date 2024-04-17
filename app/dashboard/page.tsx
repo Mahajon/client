@@ -20,13 +20,13 @@ export default async function DashboardHome() {
       <div className=" min-h-screen bg-gray-50 ">
         <DashboardHomeNavigation>
           <main className="flex flex-1 flex-col gap-4 p-4 lg:gap-6 lg:p-6">
-            <div className="w-full max-w-7xl mx-auto flex items-center py-4">
-              <h1 className="text-lg font-cal md:text-2xl lg:text-3xl">
+            <div className="mx-auto flex w-full max-w-7xl items-center py-4">
+              <h1 className="font-cal text-lg md:text-2xl lg:text-3xl">
                 My Shops
               </h1>
             </div>
 
-            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
               {shops.map((shop: any) => (
                 <ShopCard key={shop.id} shop={shop} />
               ))}

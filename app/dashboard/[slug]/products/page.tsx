@@ -17,9 +17,9 @@ export default async function ProductsIndex({
   }
 }) {
   return (
-    <div className="p-4 m-4">
+    <div className="m-4 p-4">
       <div className="flex w-full items-center justify-between">
-        <h1 className="text-2xl font-cal">Products</h1>
+        <h1 className="font-cal text-2xl">Products</h1>
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search products..." />

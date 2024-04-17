@@ -93,7 +93,7 @@ const Sidebar = () => {
   // }
 
   return (
-    <nav className="grid gap-y-1 items-start px-2 text-sm font-medium lg:px-4">
+    <nav className="grid items-start gap-y-1 px-2 text-sm font-medium lg:px-4">
       {URLs.map((url) => (
         <Link
           key={url.url}
@@ -104,7 +104,7 @@ const Sidebar = () => {
               ? "bg-accent text-accent-foreground"
               : url.url != `/dashboard/${slug}` && pathname.startsWith(url.url)
               ? "bg-accent text-accent-foreground"
-              : "hover:bg-muted text-primary-foreground"
+              : "text-primary-foreground hover:bg-muted"
           }`}
           // ${
           //   url.url == `/dashboard/${slug}` && pathname == url.url

@@ -17,11 +17,11 @@ export default function NewShopButton() {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          className="w-full px-0 flex items-center justify-center gap-x-2"
+          className="flex w-full items-center justify-center gap-x-2 px-0"
           disabled
         >
           Create Shop{" "}
-          <span className="bg-accent text-geist-1000 text-xs px-2 py-1 rounded-full">
+          <span className="text-geist-1000 rounded-full bg-accent px-2 py-1 text-xs">
             Coming Soon
           </span>
         </Button>
@@ -30,7 +30,7 @@ export default function NewShopButton() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

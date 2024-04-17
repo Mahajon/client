@@ -16,7 +16,7 @@ export default function ShopCard(shopObj: any) {
       <CardHeader className="flex flex-row items-center gap-4">
         <Image
           alt="Thumbnail"
-          className="aspect-square object-cover rounded"
+          className="aspect-square rounded object-cover"
           height="48"
           src="/placeholder.svg"
           width="48"
@@ -30,7 +30,7 @@ export default function ShopCard(shopObj: any) {
           <span className="sr-only">Toggle menu</span>
         </Button>
       </CardHeader>
-      <CardContent className="flex flex-col items-start gap-2 py-2 border-t">
+      <CardContent className="flex flex-col items-start gap-2 border-t py-2">
         <div className="flex items-center gap-4 text-sm">
           <ClockIcon className="size-4" />
           <span className="text-gray-500 dark:text-gray-400">

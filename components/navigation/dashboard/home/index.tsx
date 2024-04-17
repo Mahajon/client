@@ -13,7 +13,7 @@ export function DashboardHomeNavigation({
   return (
     <div className=" min-h-screen w-full ">
       <div className="flex flex-col">
-        <header className="w-full flex h-14 items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
+        <header className="flex h-14 w-full items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <div className="w-full flex-1">
             <Link href="/" className="flex items-center gap-2 font-cal">
               <Package2 className="size-5" />

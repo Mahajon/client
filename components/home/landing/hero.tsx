@@ -9,15 +9,15 @@ export default function Hero() {
             <div className="inline-block rounded-lg bg-gray-200 px-3 py-1 text-sm dark:bg-gray-800">
               Mahajon
             </div>
-            <h1 className="text-3xl font-cal tracking-tighter sm:text-5xl/none lg:text-7xl">
+            <h1 className="font-cal text-3xl tracking-tighter sm:text-5xl/none lg:text-7xl">
               Your All-in-One
               <br className="" /> E-commerce Solution.
             </h1>
-            <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Welcome to Mahajon, where we're transforming the way you do
-              business online. Whether you're just starting out or looking to
-              scale your operations, Mahajon has everything you need to succeed
-              in the digital marketplace.
+            <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+              Welcome to Mahajon, where we&apos;re transforming the way you do
+              business online. Whether you&apos;re just starting out or looking
+              to scale your operations, Mahajon has everything you need to
+              succeed in the digital marketplace.
             </p>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link
@@ -27,7 +27,7 @@ export default function Hero() {
                 Contact Sales
               </Link>
               <Link
-                className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200  bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+                className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200  bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
                 href="#"
               >
                 Tour the Platform
