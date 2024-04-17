@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Package2 } from "lucide-react"
 
 import NotificationDropdown from "@/components/navigation/dashboard/notification"
-import Logo from "@/components/navigation/logo"
+import Logo from "@/components/navigation/home/logo"
 import UserNavigation from "@/components/navigation/user"
 
 const links = [
@@ -31,13 +31,7 @@ export default function DashboardHomeNavigation({
         <header className="flex h-14 w-full items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <div className="flex items-center gap-x-8">
             <div className="w-full flex-1">
-              <Link
-                href="/dashboard"
-                className="flex items-center justify-start gap-x-2 font-cal"
-              >
-                <Package2 className="" />
-                <span className="font-cal ">Mahajon</span>
-              </Link>
+              <Logo />
             </div>
             <div className="flex items-center justify-start gap-x-2">
               {links.map((link) => (
