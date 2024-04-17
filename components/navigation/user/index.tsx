@@ -7,14 +7,13 @@ import { UserDropdownMenu } from "./dropdown"
 export default async function UserNavigation() {
   const user = await getUser()
 
-  if (user) {
-    return <UserDropdownMenu user={user} />
+  if (user === null) {
+    return (
+      <div className="flex items-center">
+        <ThemeToggle />
+        <LoginButton />
+      </div>
+    )
   }
-  return (
-    <>
-      <ThemeToggle />
-      <LoginButton />
-    </>
-  )
-  return null
+  return <UserDropdownMenu user={user} />
 }

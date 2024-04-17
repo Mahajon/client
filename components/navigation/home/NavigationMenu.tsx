@@ -203,7 +203,7 @@ ListItem.displayName = "ListItem"
 
 const IconListItem = React.forwardRef<
   React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
+  React.ComponentPropsWithoutRef<"a"> & { icon: React.ReactNode }
 >(({ className, title, icon, children, ...props }, ref) => {
   return (
     <li>

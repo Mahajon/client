@@ -7,7 +7,6 @@ import { siteConfig } from "@/config/site"
 import { cal, fontMono, fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/sonner"
-import { SiteHeader } from "@/components/navigation/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 

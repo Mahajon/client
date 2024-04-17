@@ -1,8 +1,8 @@
 import Link from "next/link"
-
-import Logo from "@/components/navigation/logo"
-import UserNavigation from "@/components/navigation/user"
 import { Package2 } from "lucide-react"
+
+import UserNavigation from "@/components/navigation/user"
+
 import NotificationDropdown from "../notification"
 
 export function DashboardHomeNavigation({
