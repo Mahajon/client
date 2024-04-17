@@ -137,7 +137,7 @@ export function NavigationMenuDemo() {
                   key={feature.title}
                   title={feature.title}
                   href={feature.href}
-                  icon={feature.icon}
+                  // icon={feature.icon}
                 >
                   {feature.description}
                 </IconListItem>
@@ -154,7 +154,7 @@ export function NavigationMenuDemo() {
                   key={component.title}
                   title={component.title}
                   href={component.href}
-                  icon={component.icon}
+                  // icon={component.icon}
                 >
                   {component.description}
                 </IconListItem>
@@ -204,7 +204,7 @@ ListItem.displayName = "ListItem"
 const IconListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a">
->(({ className, title, icon, children, ...props }, ref) => {
+>(({ className, title, children, ...props }, ref) => {
   return (
     <li>
       <NavigationMenuLink asChild>
@@ -216,7 +216,7 @@ const IconListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-muted-foregound">{icon}</div>
+          {/* <div className="text-muted-foregound">{icon}</div> */}
           <div className="flex flex-col gap-y-2">
             <div className="text-sm font-medium leading-none text-foreground">
               {title}
