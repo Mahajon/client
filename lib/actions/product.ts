@@ -62,3 +62,53 @@ export const getProducts = async (params: string) => {
   }
   return data
 }
+
+export const getProduct = async (id: number) => {
+  let data: any
+  const token = await getToken()
+  const response = await fetch(`${process.env.API_BASE_URL}products/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+  data = await response.json()
+  if (response.status === 200) {
+    return data
+  } else if (response.status === 401) {
+    return { error: "Unauthorized", status: 401 }
+  } else if (response.status === 404) {
+    return { error: "Not found", status: 404 }
+  } else {
+    return { error: "Internal server error", status: 500 }
+  }
+}
+
+export const updateProduct = async (shopSlug: string, formData: any) => {
+  console.log("updateProduct")
+  console.log(shopSlug)
+  let form = new FormData()
+  console.log(form)
+  
+  // parse form data to json
+
+  // let data: any
+  // const token = await getToken()
+  // const response = await fetch(`${process.env.API_BASE_URL}products/${id}/`, {
+  //   method: "PATCH",
+  //   body: formData,
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // })
+  // data = await response.json()
+  // if (response.status === 200) {
+  // } else if (response.status === 401) {
+  //   return { error: "Unauthorized", status: 401 }
+  // } else if (response.status === 404) {
+  //   return { error: "Not found", status: 404 }
+  // } else {
+  //   return { error: "Internal server error", status: 500 }
+  // }
+  // revalidatePath(`/dashboard/${shopSlug}/products`)
+  // redirect(`/dashboard/${shopSlug}/products/${data.id}`)
+}
