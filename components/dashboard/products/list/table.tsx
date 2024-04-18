@@ -1,3 +1,37 @@
+"use client"
+
+import { Suspense } from "react"
+import Image from "next/image"
+import Link from "next/link"
+import {
+  File,
+  Home,
+  LineChart,
+  ListFilter,
+  MoreHorizontal,
+  Package,
+  Package2,
+  PanelLeft,
+  PlusCircle,
+  Search as SearchIcon,
+  Settings,
+  ShoppingCart,
+  Users2,
+} from "lucide-react"
+
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Input } from "@/components/ui/input"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import {
   Table,
   TableBody,
@@ -8,6 +42,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ActionButton from "@/components/dashboard/products/list/tableAction"
 
 export default function ProductTable({
@@ -18,23 +53,55 @@ export default function ProductTable({
   products: any[]
 }) {
   return (
-    <Table className="rounded-md border bg-secondary shadow">
+    <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">ID</TableHead>
+          <TableHead className="hidden w-[20px] sm:table-cell">ID</TableHead>
+          <TableHead className="hidden w-[20px] sm:table-cell">Image</TableHead>
           <TableHead>Name</TableHead>
-          <TableHead>Stock</TableHead>
-          <TableHead className="text-right">Price</TableHead>
+          <TableHead>Status</TableHead>
+          <TableHead className="hidden md:table-cell">Price</TableHead>
+          <TableHead className="hidden md:table-cell">Total Sales</TableHead>
+          <TableHead className="hidden md:table-cell">Created at</TableHead>
+          <TableHead>
+            <span className="sr-only">Actions</span>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         {products.map((product) => (
           <TableRow key={product.id}>
-            <TableCell className="font-medium">{product.id}</TableCell>
-            <TableCell>{product.name}</TableCell>
-            <TableCell>{product.stock}</TableCell>
-            <TableCell className="text-right">{product.price}</TableCell>
-            <TableCell className="p-0 text-right">
+            <TableCell className="hidden md:table-cell">{product.id}</TableCell>
+            <TableCell className="hidden sm:table-cell">
+              <Image
+                alt="Product image"
+                className="aspect-square rounded-md object-cover"
+                height="36"
+                src="/placeholder.svg"
+                width="36"
+              />
+            </TableCell>
+            <TableCell className="font-medium">
+              <Link href={`/dashboard/${slug}/products/${product.id}`}>
+                {product.name}
+              </Link>
+            </TableCell>
+            <TableCell>
+              <Badge variant="outline">{product.status}</Badge>
+            </TableCell>
+            <TableCell className="hidden md:table-cell">
+              {product.price}
+            </TableCell>
+            <TableCell className="hidden md:table-cell">25</TableCell>
+            <TableCell className="hidden md:table-cell">
+              {new Date(product.created_at).toLocaleDateString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </TableCell>
+            <TableCell>
               <ActionButton slug={slug} id={product.id} />
             </TableCell>
           </TableRow>

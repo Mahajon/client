@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useParams } from "next/navigation"
+import { PlusCircle } from "lucide-react"
 
 import { createProduct } from "@/lib/actions/product"
 import { getShopDetails } from "@/lib/actions/shop"
@@ -54,7 +55,12 @@ export default function CreateNewProduct() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button>Create Product</Button>
+        <Button size="sm" className="h-8 gap-1">
+          <PlusCircle className="h-3.5 w-3.5" />
+          <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+            Add Product
+          </span>
+        </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <form onSubmit={handleFormSubmit}>

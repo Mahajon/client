@@ -1,4 +1,12 @@
 import { getProducts } from "@/lib/actions/product"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 
 import Empty from "./empty"
 import PaginationComponent from "./pagination"
@@ -13,6 +21,7 @@ export default async function ProductListPage({
     search?: string
     page?: number
     ordering?: string
+    status?: string
   }
 }) {
   // construct the url using the params
@@ -33,25 +42,55 @@ export default async function ProductListPage({
     searchParams.delete("ordering")
   }
 
+  if (params?.status) {
+    searchParams.append("status", params.status)
+  } else {
+    searchParams.delete("status")
+  }
+
   const products = await getProducts(searchParams.toString())
   if (products.items.total === 0) {
     return <Empty />
   }
 
   return (
-    <div className="">
-      <div className="my-4">
+    <Card>
+      <CardHeader>
+        <CardTitle>Products</CardTitle>
+        <CardDescription>
+          Manage your products and view their sales performance.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
         <ProductTable slug={slug} products={products.results} />
-      </div>
-      <div className="flex items-center justify-between">
-        <div className="text-sm">
-          Showing {products.items.start} to {products.items.end} of{" "}
-          {products.items.total} products
+      </CardContent>
+      <CardFooter className="w-full flex items-center md:items-end justify-between">
+        <div className="w-full text-xs text-muted-foreground">
+          Showing{" "}
+          <strong>
+            {products.items.start}-{products.items.end}
+          </strong>{" "}
+          of <strong>{products.items.total}</strong> products
         </div>
-        <div>
-          <PaginationComponent total={products.pages.total} />
-        </div>
-      </div>
-    </div>
+        <PaginationComponent total={products.pages.total} />
+      </CardFooter>
+    </Card>
   )
+
+  // return (
+  //   <div className="">
+  //     <div className="my-4">
+  //       <ProductTable slug={slug} products={products.results} />
+  //     </div>
+  //     <div className="flex items-center justify-between">
+  //       <div className="text-sm">
+  //         Showing {products.items.start} to {products.items.end} of{" "}
+  //         {products.items.total} products
+  //       </div>
+  //       <div>
+  //         <PaginationComponent total={products.pages.total} />
+  //       </div>
+  //     </div>
+  //   </div>
+  // )
 }

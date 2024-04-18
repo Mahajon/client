@@ -26,7 +26,7 @@ export default function PaginationComponent({ total }: { total: number }) {
   }
 
   return (
-    <Pagination>
+    <Pagination className="mx-0 justify-end">
       <PaginationContent>
         {page > 1 && (
           <PaginationItem onClick={() => setPage(page - 1)}>
