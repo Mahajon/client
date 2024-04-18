@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 
 export default function Hero() {
@@ -35,7 +36,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="mx-auto aspect-video overflow-hidden rounded-xl">
-            <img
+            <Image
               alt="Image"
               className="aspect-[16/9] object-cover object-center"
               height="675"
