@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
         </p>
         <h2>Introduction</h2>
         <p>
-          Mahajon("we," "us," or "our") operates Mahajon ("Service"). This page
+          Mahajon(&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) operates Mahajon (&quot;Service&quot;). This page
           informs you of our policies regarding the collection, use, and
           disclosure of personal data when you use our Service and the choices
           you have associated with that data.
@@ -27,9 +27,10 @@ export default function PrivacyPolicy() {
           </li>
           <li>
             <strong>Usage Data</strong> is data collected automatically such as
-            information from your computer's internet protocol (IP) address,
-            browser type, internet service provider (ISP), referring/exit pages,
-            date and time stamps, and/or how you use our Service.
+            information from your computer&apos;s internet protocol (IP)
+            address, browser type, internet service provider (ISP),
+            referring/exit pages, date and time stamps, and/or how you use our
+            Service.
           </li>
           <li>
             <strong>Account</strong> means a unique account created by you to
@@ -161,9 +162,9 @@ export default function PrivacyPolicy() {
           means to protect your Personal Data, we cannot guarantee its absolute
           security.
         </p>
-        <h2>Children's Privacy</h2>
+        <h2>Children&apos;s Privacy</h2>
         <p>
-          Our Service does not address anyone under the age of 18 ("Children").
+          Our Service does not address anyone under the age of 18 (&quot;Children&quot;).
           We do not knowingly collect personal identifiable information from
           children under 18. If you are a parent or guardian and you are aware
           that your child has provided us with Personal Data, please contact us.

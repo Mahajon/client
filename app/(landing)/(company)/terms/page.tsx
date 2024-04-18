@@ -13,8 +13,8 @@ export default function TermsPage() {
           <strong>Last Updated:</strong> April 18, 2024
         </p>
         <p>
-          These Terms of Service ("Terms") govern your access to and use of
-          Mahajon ("Service") provided by Mahajon Ltd. ("we," "us," or "our").
+          These Terms of Service (&quot;Terms&quot;) govern your access to and use of
+          Mahajon (&quot;Service&quot;) provided by Mahajon Ltd. (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;).
           Please read these Terms carefully before accessing or using the
           Service.
         </p>
@@ -148,7 +148,7 @@ export default function TermsPage() {
 
         <h2>8. Disclaimer</h2>
         <p>
-          THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTY OF
+          THE SERVICE IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTY OF
           ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
           WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
           NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE
