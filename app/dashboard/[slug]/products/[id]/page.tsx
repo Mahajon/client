@@ -69,7 +69,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export default function Dashboard() {
+export default function ProductDetail() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -80,7 +80,7 @@ export default function Dashboard() {
                 <ChevronLeft className="size-4" />
                 <span className="sr-only">Back</span>
               </Button>
-              <h1 className="flex-1 shrink-0 whitespace-nowrap font-cal text-xl tracking-tight sm:grow-0">
+              <h1 className="flex-1 shrink-0 whitespace-nowrap font-cal text-xl sm:grow-0">
                 Pro Controller
               </h1>
               <Badge variant="outline" className="ml-auto sm:ml-0">

@@ -5,7 +5,7 @@ export default function CustomersSection() {
     <section className="w-full border-t bg-background py-12 md:py-24 lg:py-32">
       <div className="container grid items-center gap-6 px-4 text-center md:px-6 lg:gap-10">
         <div className="space-y-3">
-          <h2 className="font-cal text-3xl tracking-tighter sm:text-4xl md:text-5xl">
+          <h2 className="font-cal text-3xl  sm:text-4xl md:text-5xl">
             Meet our Customers
           </h2>
           <p className="mx-auto max-w-[700px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">

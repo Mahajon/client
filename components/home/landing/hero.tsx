@@ -9,7 +9,7 @@ export default function Hero() {
             <div className="inline-block rounded-lg bg-gray-200 px-3 py-1 text-sm dark:bg-gray-800">
               Mahajon
             </div>
-            <h1 className="font-cal text-3xl tracking-tighter sm:text-5xl/none lg:text-7xl">
+            <h1 className="font-cal text-3xl sm:text-5xl/none lg:text-7xl">
               Your All-in-One
               <br className="" /> E-commerce Solution.
             </h1>

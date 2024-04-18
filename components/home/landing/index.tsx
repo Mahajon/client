@@ -20,7 +20,7 @@ export default function LandingPage() {
                 <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
                   Why Choose Us
                 </div>
-                <h2 className="font-cal text-3xl tracking-tighter sm:text-5xl">
+                <h2 className="font-cal text-3xl  sm:text-5xl">
                   The Modern Workflow Platform
                 </h2>
                 <p className="max-w-[500px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -90,7 +90,7 @@ export default function LandingPage() {
                 <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
                   How It Works
                 </div>
-                <h2 className="font-cal text-3xl tracking-tighter sm:text-5xl">
+                <h2 className="font-cal text-3xl sm:text-5xl">
                   Streamlined workflow. Effortless deployment.
                 </h2>
                 <p className="max-w-[600px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -150,7 +150,7 @@ export default function LandingPage() {
               <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">
                 Performance
               </div>
-              <h2 className="lg:leading-tighter font-cal text-3xl tracking-tighter sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
+              <h2 className="font-cal text-3xl  sm:text-4xl md:text-5xl xl:text-[3.4rem] 2xl:text-[3.75rem]">
                 Traffic spikes should be exciting, not scary.
               </h2>
               <Link
