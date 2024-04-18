@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+
 import { getProducts } from "@/lib/actions/product"
 import {
   Card,
@@ -62,7 +64,9 @@ export default async function ProductListPage({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ProductTable slug={slug} products={products.results} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ProductTable slug={slug} products={products.results} />
+        </Suspense>
       </CardContent>
       <CardFooter className="w-full flex items-center md:items-end justify-between">
         <div className="w-full text-xs text-muted-foreground">
@@ -76,21 +80,4 @@ export default async function ProductListPage({
       </CardFooter>
     </Card>
   )
-
-  // return (
-  //   <div className="">
-  //     <div className="my-4">
-  //       <ProductTable slug={slug} products={products.results} />
-  //     </div>
-  //     <div className="flex items-center justify-between">
-  //       <div className="text-sm">
-  //         Showing {products.items.start} to {products.items.end} of{" "}
-  //         {products.items.total} products
-  //       </div>
-  //       <div>
-  //         <PaginationComponent total={products.pages.total} />
-  //       </div>
-  //     </div>
-  //   </div>
-  // )
 }
