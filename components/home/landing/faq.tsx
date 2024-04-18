@@ -69,7 +69,10 @@ export default function FAQSection() {
             <Image
               alt="Illustration"
               className="rounded-lg object-cover"
-              src={UndrawQuestions}
+              src={UndrawQuestions.src}
+              unoptimized
+              height={400}
+              width={400}
             />
           </div>
         </div>
