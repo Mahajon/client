@@ -1,13 +1,6 @@
 "use client"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
 import {
   Select,
@@ -27,7 +20,7 @@ export default function StatusSection({ status }: { status: string }) {
         <div className="grid gap-6">
           <div className="grid gap-3">
             <Label htmlFor="status">Status</Label>
-            <Select>
+            <Select name="status" defaultValue={status}>
               <SelectTrigger id="status" aria-label="Select status">
                 <SelectValue placeholder="Select status" />
               </SelectTrigger>

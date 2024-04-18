@@ -1,22 +1,8 @@
 "use client"
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 
 export default function DetailSection({
@@ -37,6 +23,7 @@ export default function DetailSection({
             <Label htmlFor="name">Name</Label>
             <Input
               id="name"
+              name="name"
               type="text"
               className="w-full"
               defaultValue={name}
@@ -46,6 +33,7 @@ export default function DetailSection({
             <Label htmlFor="description">Description</Label>
             <Textarea
               id="description"
+              name="description"
               defaultValue={description}
               placeholder="Product description"
               className="min-h-32"

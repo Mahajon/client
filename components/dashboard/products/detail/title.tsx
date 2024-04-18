@@ -1,7 +1,11 @@
+"use client"
+
 import { ChevronLeft } from "lucide-react"
+import { useFormStatus } from "react-dom"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { LoadingSpinner } from "@/components/icons"
 
 export default function TitleSection({
   name,
@@ -10,6 +14,7 @@ export default function TitleSection({
   name: string
   status: string
 }) {
+  const { pending } = useFormStatus()
   return (
     <div className="flex items-center gap-4">
       <Button variant="outline" size="icon" className="size-7">
@@ -26,7 +31,15 @@ export default function TitleSection({
         <Button variant="outline" size="sm">
           Discard
         </Button>
-        <Button size="sm">Save Product</Button>
+        <Button size="sm" disabled={pending}>
+          {pending ? (
+            <div className="w-full flex items-center justify-center">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            "Save Product"
+          )}
+        </Button>
       </div>
     </div>
   )

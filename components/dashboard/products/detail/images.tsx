@@ -15,9 +15,6 @@ export default function ImageSection({ images }: { images: any[] }) {
     <Card className="overflow-hidden">
       <CardHeader>
         <CardTitle>Product Images</CardTitle>
-        <CardDescription>
-          Lipsum dolor sit amet, consectetur adipiscing elit
-        </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-3 gap-2">
