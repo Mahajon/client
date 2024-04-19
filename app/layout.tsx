@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import Providers from "./providers"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mahajon.com"),
   title: {
     default: siteConfig.name,
     template: `%s - ${siteConfig.name}`,
@@ -22,6 +23,9 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
+  },
+  openGraph: {
+    images: "/og.png",
   },
 }
 
