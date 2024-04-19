@@ -3,10 +3,7 @@ import type {
   NextApiRequest,
   NextApiResponse,
 } from "next"
-import { FirestoreAdapter } from "@auth/firebase-adapter"
-import { cert } from "firebase-admin/app"
 import { NextAuthOptions, getServerSession } from "next-auth"
-import { Adapter } from "next-auth/adapters"
 import { decode, encode } from "next-auth/jwt"
 import CredentialsProvider from "next-auth/providers/credentials"
 
@@ -64,13 +61,6 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: FirestoreAdapter({
-    credential: cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY!.replace(/\\n/g, "\n"),
-    }),
-  }) as Adapter,
   session: {
     strategy: "jwt",
   },
