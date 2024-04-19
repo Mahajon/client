@@ -1,35 +1,22 @@
 "use client"
 
 import Link from "next/link"
-import { onAuthStateChanged } from "firebase/auth"
 import {
   Check,
-  Cloud,
   CreditCard,
-  // Github,
-  Keyboard,
   LifeBuoy,
   LogOut,
-  Mail,
-  MessageSquare,
   Monitor,
   Moon,
-  Plus,
-  PlusCircle,
   Settings,
   Sun,
-  SunSnow,
   User,
   UserPlus,
-  Users,
 } from "lucide-react"
-import NextAuth from "next-auth/next"
 import { signOut } from "next-auth/react"
 import { useTheme } from "next-themes"
 
-import { auth } from "@/lib/firebase"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -38,7 +25,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
