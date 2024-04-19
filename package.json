@@ -33,6 +33,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.12",
     "@tanstack/react-table": "^8.15.3",
+    "@vercel/edge-config": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^1.2.1",
     "firebase": "^10.9.0",
