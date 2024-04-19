@@ -1,11 +1,11 @@
 import * as React from "react"
 import Link from "next/link"
+import { Facebook, Instagram, Twitter } from "lucide-react"
 
 import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-import { Github, Twitter } from "@/components/icons"
 
 import { Badge } from "../../ui/badge"
 import UserNavigation from "../user/index"
@@ -27,37 +27,7 @@ export function MainNav() {
         <NavigationMenuDemo />
       </div>
       <div className="flex flex-1 items-center justify-end space-x-4">
-        <nav className="flex items-center space-x-1">
-          <Link href={siteConfig.links.github} target="_blank" rel="noreferrer">
-            <div
-              className={buttonVariants({
-                size: "icon",
-                variant: "ghost",
-              })}
-            >
-              <Github className="size-5" />
-              <span className="sr-only">GitHub</span>
-            </div>
-          </Link>
-
-          <Link
-            href={siteConfig.links.twitter}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div
-              className={buttonVariants({
-                size: "icon",
-                variant: "ghost",
-              })}
-            >
-              <Twitter className="size-5 fill-current" />
-              <span className="sr-only">Twitter</span>
-            </div>
-          </Link>
-
-          <UserNavigation />
-        </nav>
+        <UserNavigation />
       </div>
     </div>
   )
