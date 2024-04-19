@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { ChevronLeft } from "lucide-react"
 import { useFormStatus } from "react-dom"
 
@@ -14,10 +15,16 @@ export default function TitleSection({
   name: string
   status: string
 }) {
+  const router = useRouter()
   const { pending } = useFormStatus()
   return (
     <div className="flex items-center gap-4">
-      <Button variant="outline" size="icon" className="size-7">
+      <Button
+        variant="outline"
+        size="icon"
+        className="size-7"
+        onClick={router.back}
+      >
         <ChevronLeft className="size-4" />
         <span className="sr-only">Back</span>
       </Button>
