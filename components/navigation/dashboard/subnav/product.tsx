@@ -4,16 +4,8 @@ export const productUrls = [
     url: "/products",
   },
   {
-    name: "New Product",
-    url: "/products/new",
-  },
-  {
     name: "Categories",
     url: "/products/categories",
-  },
-  {
-    name: "Brands",
-    url: "/products/brands",
   },
   {
     name: "Collections",
