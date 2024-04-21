@@ -1,8 +1,27 @@
-export default function CategoryDetail({ params }: { params: { id: number } }) {
+import { getCategoryDetail } from "@/lib/actions/category"
+import CategoryDeleteDialog from "@/components/dashboard/category/delete"
+import CategoryUpdateForm from "@/components/dashboard/category/detail/update"
+
+export default async function CategoryDetail({
+  params,
+}: {
+  params: { id: number }
+}) {
+  const category = await getCategoryDetail(params.id)
+  if (!category.data) {
+    return <div>Category not found</div>
+  }
   return (
-    <div>
-      Category Detail
-      <div>Category ID: {params.id}</div>
+    <div className="flex flex-col items-start justify-start gap-3">
+      <div className="w-full flex items-center justify-between">
+        <div className="font-cal text-3xl">{category.data.name}</div>
+        <div className="flex gap-2">
+          <CategoryDeleteDialog data={category.data} />
+          <CategoryUpdateForm data={category.data} />
+        </div>
+      </div>
+      <div>Category ID: {category.data.id}</div>
+      <div></div>
     </div>
   )
 }
