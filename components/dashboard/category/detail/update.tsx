@@ -20,14 +20,17 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Form from "@/components/form"
+import { UpdateButton } from "@/components/form/buttons"
 import { LoadingSpinner } from "@/components/icons"
 
 export default function CategoryUpdateForm({ data }: { data: any }) {
   const params = useParams()
   const shopSlug = params.slug as string
   const [slug, setSlug] = useState(data.slug)
-  const { pending } = useFormStatus()
-  const [state, handleSubmit] = useFormState(updateCategory, null)
+  // const { pending } = useFormStatus()
+  // const [state, handleSubmit] = useFormState(updateCategory, null)
+  const updateCategoryWithSlug = updateCategory.bind(null, shopSlug)
 
   const handleSlugChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     //convert the name to a slug
@@ -39,23 +42,23 @@ export default function CategoryUpdateForm({ data }: { data: any }) {
     )
   }
 
-  useEffect(() => {
-    if (state?.status === 200) {
-      toast("Success", {
-        description: "Category updated successfully",
-      })
-      const closeButton = document.getElementById("updateFormClose")
-      if (closeButton) closeButton.click()
-    } else if (state != null) {
-      const errorId = document.getElementById("error")
-      if (errorId) {
-        errorId.innerText = state?.error
-        setTimeout(() => {
-          errorId.innerText = ""
-        }, 3000)
-      }
-    }
-  }, [state])
+  // useEffect(() => {
+  //   if (state?.status === 200) {
+  //     toast("Success", {
+  //       description: "Category updated successfully",
+  //     })
+  //     const closeButton = document.getElementById("updateFormClose")
+  //     if (closeButton) closeButton.click()
+  //   } else if (state != null) {
+  //     const errorId = document.getElementById("error")
+  //     if (errorId) {
+  //       errorId.innerText = state?.error
+  //       setTimeout(() => {
+  //         errorId.innerText = ""
+  //       }, 3000)
+  //     }
+  //   }
+  // }, [state])
 
   return (
     <AlertDialog>
@@ -68,10 +71,14 @@ export default function CategoryUpdateForm({ data }: { data: any }) {
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <form action={handleSubmit}>
+        {/* <form action={handleSubmit}> */}
+        <Form action={updateCategoryWithSlug}>
+          {" "}
           <AlertDialogHeader>
             <AlertDialogTitle>Update {data.name}</AlertDialogTitle>
             <input type="hidden" name="id" value={data.id} />
+            {/* <input type="hidden" name="shop" value={shopSlug} /> */}
+
             <div className="grid gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>
@@ -102,12 +109,12 @@ export default function CategoryUpdateForm({ data }: { data: any }) {
             </div>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel id="updateFormClose">Cancel</AlertDialogCancel>
-            <Button type="submit" disabled={pending}>
-              {pending ? <LoadingSpinner /> : "Update"}
-            </Button>
+            <AlertDialogCancel id="updateFormClose" className="h-8">
+              Cancel
+            </AlertDialogCancel>
+            <UpdateButton />
           </AlertDialogFooter>
-        </form>
+        </Form>
       </AlertDialogContent>
     </AlertDialog>
   )

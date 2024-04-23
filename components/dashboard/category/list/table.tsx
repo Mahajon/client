@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 
 import {
   Table,
@@ -21,6 +21,7 @@ export default function CategoryTable({
   activeId: string
 }) {
   const router = useRouter()
+  const params = useParams()
   return (
     <Table>
       <TableHeader>
@@ -39,7 +40,7 @@ export default function CategoryTable({
             key={category.id}
             onClick={() =>
               router.push(
-                `/dashboard/${category.shop}/products/categories/${category.id}`
+                `/dashboard/${params.slug}/products/categories/${category.id}`
               )
             }
             className={`cursor-pointer ${

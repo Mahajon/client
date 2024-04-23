@@ -55,30 +55,19 @@ export const getShopList = async () => {
 
 export const getShopDetails = async (slug: string) => {
   const token = await getToken()
-  const response = await fetch(`${process.env.API_BASE_URL}shops/${slug}/`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
+  let response
+  try {
+    response = await fetch(`${process.env.API_BASE_URL}shops/${slug}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  } catch (error: any) {
+    return { error: error.message, status: 500 }
+  }
+  if (response.status != 200) {
+    return { error: "Something went wrong", status: response.status }
+  }
   const data = await response.json()
   return data
 }
-
-// export const getShopDetails = async (slug: string) => {
-//   // const cookieStore = cookies()
-//   // if (cookieStore.has("shop")) {
-//   //   const shop: any = cookieStore.get("shop")
-//   //   console.log(JSON.parse(shop.value))
-//   //   return JSON.parse(shop.value)
-//   // } else {
-//   const token = await getToken()
-//   const response = await fetch(`${process.env.API_BASE_URL}shops/${slug}/`, {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   })
-//   const data = await response.json()
-//   // cookieStore.set("shop", JSON.stringify(data))
-//   return data
-//   // }
-// }

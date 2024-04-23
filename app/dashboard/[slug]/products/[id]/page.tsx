@@ -13,7 +13,7 @@ export default async function ProductDetail({
 }: {
   params: { slug: string; id: number }
 }) {
-  const product = await getProduct(params.id)
+  const product = await getProduct(params.slug, params.id)
 
   return (
     <div className="flex min-h-screen w-full flex-col">

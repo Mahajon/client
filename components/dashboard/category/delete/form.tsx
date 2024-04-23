@@ -11,6 +11,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { Delete } from "@/components/form/buttons"
 import { LoadingSpinner } from "@/components/icons"
 
 export default function CategoryDeleteForm({ data }: { data: any }) {
@@ -27,17 +28,8 @@ export default function CategoryDeleteForm({ data }: { data: any }) {
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>
-        <AlertDialogCancel>Cancel</AlertDialogCancel>
-        <Button type="submit" disabled={pending} variant="destructive">
-          {pending ? (
-            <LoadingSpinner />
-          ) : (
-            <span className="flex items-center gap-2 font-bold">
-              <Trash className="h-3.5 w-3.5" />
-              Delete
-            </span>
-          )}
-        </Button>
+        <AlertDialogCancel className="h-8">Cancel</AlertDialogCancel>
+        <Delete />
       </AlertDialogFooter>
     </div>
   )

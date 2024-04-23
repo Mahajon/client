@@ -13,6 +13,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import Form from "@/components/form"
 
 import CategoryDeleteForm from "./form"
 
@@ -25,24 +26,25 @@ export default function CategoryDeleteDialog({
 }) {
   const params = useParams()
   const shopSlug = params.slug as string
-  const [state, handleSubmit] = useFormState(deleteCategory, null)
+  const deleteCategoryWithShop = deleteCategory.bind(null, shopSlug)
+  // const [state, handleSubmit] = useFormState(deleteCategory, null)
 
-  useEffect(() => {
-    if (state?.status === 204) {
-      toast("Success", {
-        description: "Category deleted successfully",
-      })
-      redirect(`/dashboard/${shopSlug}/products/categories`)
-    } else if (state != null) {
-      const errorId = document.getElementById("error")
-      if (errorId) {
-        errorId.innerText = state?.error
-        setTimeout(() => {
-          errorId.innerText = ""
-        }, 3000)
-      }
-    }
-  }, [state])
+  // useEffect(() => {
+  //   if (state?.status === 204) {
+  //     toast("Success", {
+  //       description: "Category deleted successfully",
+  //     })
+  //     redirect(`/dashboard/${shopSlug}/products/categories`)
+  //   } else if (state != null) {
+  //     const errorId = document.getElementById("error")
+  //     if (errorId) {
+  //       errorId.innerText = state?.error
+  //       setTimeout(() => {
+  //         errorId.innerText = ""
+  //       }, 3000)
+  //     }
+  //   }
+  // }, [state])
 
   return (
     <AlertDialog>
@@ -65,9 +67,9 @@ export default function CategoryDeleteDialog({
         )}
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <form action={handleSubmit}>
+        <Form action={deleteCategoryWithShop}>
           <CategoryDeleteForm data={data} />
-        </form>
+        </Form>
       </AlertDialogContent>
     </AlertDialog>
   )

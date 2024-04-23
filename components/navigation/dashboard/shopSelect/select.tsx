@@ -71,17 +71,14 @@ export default function Select({ shops }: { shops: any[] }) {
               <div className="mr-2 flex items-center justify-start">
                 <Avatar className="aspect-square rounded-full p-2">
                   {currentShop.logo ? (
-                    <AvatarImage
-                      src={currentShop.logo}
-                      alt={currentShop.name}
-                    />
+                    <AvatarImage src={shop.logo} alt={shop.name} />
                   ) : (
                     <AvatarFallback>
                       <BoxSelect className="size-6" />
                     </AvatarFallback>
                   )}
                 </Avatar>
-                <span className="">{currentShop.name}</span>
+                <span className="">{shop.name}</span>
               </div>
               {slug === shop.slug && <Check className="ml-auto size-4" />}
             </Link>

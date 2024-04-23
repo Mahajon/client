@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { CreateButton } from "@/components/form/buttons"
 import { LoadingSpinner } from "@/components/icons"
 
 export default function CreateNewcategory() {
@@ -69,9 +70,8 @@ export default function CreateNewcategory() {
         <form action={handleSubmit}>
           <AlertDialogHeader>
             <AlertDialogTitle>Create New Category</AlertDialogTitle>
-
+            <input type="hidden" name="shop" value={shopSlug} />
             <div className="grid gap-6">
-              <input type="hidden" name="shop" value={shopSlug} />
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -100,9 +100,10 @@ export default function CreateNewcategory() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <Button type="submit" disabled={pending}>
+            {/* <Button type="submit" disabled={pending}>
               {pending ? <LoadingSpinner /> : "Create"}
-            </Button>
+            </Button> */}
+            <CreateButton />
           </AlertDialogFooter>
         </form>
       </AlertDialogContent>

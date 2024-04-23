@@ -5,9 +5,9 @@ import CategoryUpdateForm from "@/components/dashboard/category/detail/update"
 export default async function CategoryDetail({
   params,
 }: {
-  params: { id: number }
+  params: { slug: string; id: number }
 }) {
-  const category = await getCategoryDetail(params.id)
+  const category = await getCategoryDetail(params.slug, params.id)
   if (!category.data) {
     return <div>Category not found</div>
   }

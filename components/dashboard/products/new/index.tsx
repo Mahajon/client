@@ -5,13 +5,10 @@ import { useParams } from "next/navigation"
 import { PlusCircle } from "lucide-react"
 
 import { createProduct } from "@/lib/actions/product"
-import { getShopDetails } from "@/lib/actions/shop"
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
-  AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
@@ -20,12 +17,13 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { LoadingSpinner } from "@/components/icons"
+import Form from "@/components/form"
+import { Continue } from "@/components/form/buttons"
 
 export default function CreateNewProduct() {
   const params = useParams()
   const [slug, setSlug] = useState("")
-  const [loading, setLoading] = useState(false)
+  const handleSubmit = createProduct.bind(null, params.slug as string)
 
   const handleSlugChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     //convert the name to a slug
@@ -35,21 +33,6 @@ export default function CreateNewProduct() {
         .replace(/ /g, "-")
         .replace(/[^a-z0-9-]/g, "")
     )
-  }
-
-  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    setLoading(true)
-    const formData = new FormData(event.currentTarget)
-    const shop = await getShopDetails(params.slug as string)
-    formData.append("shop", shop.id)
-    const response = await createProduct(formData, params.slug as string)
-    if (response.error) {
-      console.error(response.error)
-      const errorDiv = document.getElementById("error")
-      if (errorDiv) errorDiv.innerText = response.error
-      setLoading(false)
-    }
   }
 
   return (
@@ -63,7 +46,7 @@ export default function CreateNewProduct() {
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <form onSubmit={handleFormSubmit}>
+        <Form action={handleSubmit}>
           <AlertDialogHeader>
             <AlertDialogTitle>Create New Product</AlertDialogTitle>
 
@@ -95,14 +78,10 @@ export default function CreateNewProduct() {
             </div>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            {/* <AlertDialogAction> */}
-            <Button type="submit" disabled={loading}>
-              {loading ? <LoadingSpinner /> : "Continue"}
-            </Button>
-            {/* </AlertDialogAction> */}
+            <AlertDialogCancel className="h-8">Cancel</AlertDialogCancel>
+            <Continue />
           </AlertDialogFooter>
-        </form>
+        </Form>
       </AlertDialogContent>
     </AlertDialog>
   )

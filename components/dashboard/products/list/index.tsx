@@ -28,7 +28,6 @@ export default async function ProductListPage({
 }) {
   // construct the url using the params
   let searchParams = new URLSearchParams({
-    shop: slug,
     page: params?.page?.toString() || "1",
   })
 
@@ -50,7 +49,7 @@ export default async function ProductListPage({
     searchParams.delete("status")
   }
 
-  const products = await getProducts(searchParams.toString())
+  const products = await getProducts(slug, searchParams.toString())
   if (products.items.total === 0) {
     return <Empty />
   }

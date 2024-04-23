@@ -26,7 +26,10 @@ export default function CategoryList({
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Categories</CardTitle>
+        <div className="flex items-center justify-between">
+          <CardTitle>Categories</CardTitle>
+          <CreateNewcategory />
+        </div>
         <CardDescription>
           Manage your products and view their sales performance.
         </CardDescription>
