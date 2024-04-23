@@ -1,10 +1,7 @@
 "use client"
 
-import { useEffect } from "react"
-import { redirect, useParams } from "next/navigation"
+import { useParams } from "next/navigation"
 import { Trash } from "lucide-react"
-import { useFormState } from "react-dom"
-import { toast } from "sonner"
 
 import { deleteCategory } from "@/lib/actions/category"
 import {
@@ -27,24 +24,6 @@ export default function CategoryDeleteDialog({
   const params = useParams()
   const shopSlug = params.slug as string
   const deleteCategoryWithShop = deleteCategory.bind(null, shopSlug)
-  // const [state, handleSubmit] = useFormState(deleteCategory, null)
-
-  // useEffect(() => {
-  //   if (state?.status === 204) {
-  //     toast("Success", {
-  //       description: "Category deleted successfully",
-  //     })
-  //     redirect(`/dashboard/${shopSlug}/products/categories`)
-  //   } else if (state != null) {
-  //     const errorId = document.getElementById("error")
-  //     if (errorId) {
-  //       errorId.innerText = state?.error
-  //       setTimeout(() => {
-  //         errorId.innerText = ""
-  //       }, 3000)
-  //     }
-  //   }
-  // }, [state])
 
   return (
     <AlertDialog>

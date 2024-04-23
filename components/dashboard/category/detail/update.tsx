@@ -1,11 +1,9 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { revalidatePath } from "next/cache"
-import { redirect, useParams } from "next/navigation"
+import { useState } from "react"
+import { useParams } from "next/navigation"
 import { Pen } from "lucide-react"
-import { useFormState, useFormStatus } from "react-dom"
-import { toast } from "sonner"
+
 
 import { updateCategory } from "@/lib/actions/category"
 import {
@@ -22,14 +20,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import Form from "@/components/form"
 import { UpdateButton } from "@/components/form/buttons"
-import { LoadingSpinner } from "@/components/icons"
 
 export default function CategoryUpdateForm({ data }: { data: any }) {
   const params = useParams()
   const shopSlug = params.slug as string
   const [slug, setSlug] = useState(data.slug)
-  // const { pending } = useFormStatus()
-  // const [state, handleSubmit] = useFormState(updateCategory, null)
   const updateCategoryWithSlug = updateCategory.bind(null, shopSlug)
 
   const handleSlugChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,23 +37,6 @@ export default function CategoryUpdateForm({ data }: { data: any }) {
     )
   }
 
-  // useEffect(() => {
-  //   if (state?.status === 200) {
-  //     toast("Success", {
-  //       description: "Category updated successfully",
-  //     })
-  //     const closeButton = document.getElementById("updateFormClose")
-  //     if (closeButton) closeButton.click()
-  //   } else if (state != null) {
-  //     const errorId = document.getElementById("error")
-  //     if (errorId) {
-  //       errorId.innerText = state?.error
-  //       setTimeout(() => {
-  //         errorId.innerText = ""
-  //       }, 3000)
-  //     }
-  //   }
-  // }, [state])
 
   return (
     <AlertDialog>

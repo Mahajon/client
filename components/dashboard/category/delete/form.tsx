@@ -1,6 +1,5 @@
 "use client"
 
-import { Trash } from "lucide-react"
 import { useFormStatus } from "react-dom"
 
 import {
@@ -10,9 +9,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
 import { Delete } from "@/components/form/buttons"
-import { LoadingSpinner } from "@/components/icons"
 
 export default function CategoryDeleteForm({ data }: { data: any }) {
   const { pending } = useFormStatus()
@@ -24,7 +21,6 @@ export default function CategoryDeleteForm({ data }: { data: any }) {
           Are you sure you want to delete category <strong>{data.name}</strong>?
           All associated subcategories will be deleted.
           <input type="hidden" name="id" value={data.id} />
-          <input type="hidden" name="shop" value={data.shop} />
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter>

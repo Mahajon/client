@@ -9,7 +9,7 @@ import { Button } from "../ui/button"
 export const CreateButton = () => {
   const { pending } = useFormStatus()
   return (
-    <Button type="submit" disabled={pending}>
+    <Button type="submit" size="sm" disabled={pending} className="h-8 w-24">
       {pending ? <LoadingDots /> : "Create"}
     </Button>
   )
