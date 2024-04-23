@@ -1,18 +1,15 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { redirect } from "next/navigation"
 
 import { getToken } from "../user"
 
-export const createCategory = async (prevState: any, formData: FormData) => {
+export const createCategory = async (
+  shopSlug: string,
+  prevState: any,
+  formData: FormData
+) => {
   const token = await getToken()
-  // const data = {
-  //   name: formData.get("name"),
-  //   description: formData.get("description"),
-  // }
-  const shopSlug = formData.get("shop")
-  formData.delete("shop")
 
   let response
   try {
@@ -21,7 +18,7 @@ export const createCategory = async (prevState: any, formData: FormData) => {
       body: formData,
       headers: {
         Authorization: `Bearer ${token}`,
-        Shop: shopSlug as string,
+        Shop: shopSlug,
       },
     })
   } catch (error: any) {
@@ -30,9 +27,14 @@ export const createCategory = async (prevState: any, formData: FormData) => {
   if (response.status === 201) {
     const data = await response.json()
     revalidatePath(`/dashboard/${shopSlug}/products/categories/${data.id}`)
-    return { data, status: 201 }
+    return {
+      data,
+      status: 201,
+      message: `Category <strong>${data.name}</strong> created successfully.`,
+      redirect: `/dashboard/${shopSlug}/products/categories/${data.id}`,
+    }
   } else {
-    return { error: "Internal server error", status: 500 }
+    return { message: "Something went wrong", status: 500 }
   }
 }
 
@@ -57,7 +59,7 @@ export const updateCategory = async (
       }
     )
   } catch (error: any) {
-    return { error: error.message, status: 500 }
+    return { message: error.message, status: 500 }
   }
   if (response.status === 200) {
     const data = await response.json()

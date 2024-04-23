@@ -1,10 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { redirect, useParams } from "next/navigation"
+import { useState } from "react"
+import { useParams } from "next/navigation"
 import { PlusCircle } from "lucide-react"
-import { useFormState, useFormStatus } from "react-dom"
-import { toast } from "sonner"
 
 import { createCategory } from "@/lib/actions/category"
 import {
@@ -19,15 +17,16 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import Form from "@/components/form"
 import { CreateButton } from "@/components/form/buttons"
-import { LoadingSpinner } from "@/components/icons"
 
 export default function CreateNewcategory() {
   const params = useParams()
-  const shopSlug = params.slug as string
   const [slug, setSlug] = useState("")
-  const { pending } = useFormStatus()
-  const [state, handleSubmit] = useFormState(createCategory, null)
+  const createCategoryWithShop = createCategory.bind(
+    null,
+    params.slug as string
+  )
 
   const handleSlugChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     //convert the name to a slug
@@ -38,23 +37,6 @@ export default function CreateNewcategory() {
         .replace(/[^a-z0-9-]/g, "")
     )
   }
-
-  useEffect(() => {
-    if (state?.status === 201) {
-      toast("Success", {
-        description: "Category created successfully",
-      })
-      redirect(`/dashboard/${shopSlug}/products/categories/${state.data.id}`)
-    } else if (state != null) {
-      const errorId = document.getElementById("error")
-      if (errorId) {
-        errorId.innerText = state?.error
-        setTimeout(() => {
-          errorId.innerText = ""
-        }, 3000)
-      }
-    }
-  }, [state])
 
   return (
     <AlertDialog>
@@ -67,10 +49,9 @@ export default function CreateNewcategory() {
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
-        <form action={handleSubmit}>
+        <Form action={createCategoryWithShop}>
           <AlertDialogHeader>
             <AlertDialogTitle>Create New Category</AlertDialogTitle>
-            <input type="hidden" name="shop" value={shopSlug} />
             <div className="grid gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>
@@ -99,13 +80,10 @@ export default function CreateNewcategory() {
             </div>
           </AlertDialogHeader>
           <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            {/* <Button type="submit" disabled={pending}>
-              {pending ? <LoadingSpinner /> : "Create"}
-            </Button> */}
+            <AlertDialogCancel className="h-8">Cancel</AlertDialogCancel>
             <CreateButton />
           </AlertDialogFooter>
-        </form>
+        </Form>
       </AlertDialogContent>
     </AlertDialog>
   )
