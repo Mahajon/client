@@ -24,6 +24,8 @@ export default function Form({
       toast("Success", {
         description: state?.message,
       })
+      const closeButton = document.getElementById("AlertDialogCloseButton")
+      closeButton?.click()
       if (state?.redirect) router.push(state.redirect)
       else router.refresh()
     } else if (state != null) {
