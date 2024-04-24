@@ -13,7 +13,9 @@ export default async function CategoryLayout({
   const categories = await getCategoryList(params.slug)
   if (categories.data.count > 0) {
     return (
-      <CategoryDivider children={children} data={categories.data.results} />
+      <CategoryDivider data={categories.data.results}>
+        children={children}
+      </CategoryDivider>
     )
   }
   return <CategoryEmptyPage />
