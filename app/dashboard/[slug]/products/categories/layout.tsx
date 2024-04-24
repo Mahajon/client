@@ -14,7 +14,7 @@ export default async function CategoryLayout({
   if (categories.data.count > 0) {
     return (
       <CategoryDivider data={categories.data.results}>
-        children={children}
+        {children}
       </CategoryDivider>
     )
   }

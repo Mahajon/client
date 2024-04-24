@@ -49,7 +49,7 @@ export default function CreateNewProduct() {
         <Form action={handleSubmit}>
           <AlertDialogHeader>
             <AlertDialogTitle>Create New Product</AlertDialogTitle>
-
+            <input type="hidden" name="shop" value={params.slug} />
             <div className="grid gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>

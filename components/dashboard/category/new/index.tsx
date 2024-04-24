@@ -52,6 +52,7 @@ export default function CreateNewcategory() {
         <Form action={createCategoryWithShop}>
           <AlertDialogHeader>
             <AlertDialogTitle>Create New Category</AlertDialogTitle>
+            <input type="hidden" name="shop" value={params.slug} />
             <div className="grid gap-6">
               <div className="grid gap-3">
                 <Label htmlFor="name">Name</Label>
