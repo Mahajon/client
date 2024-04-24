@@ -33,7 +33,7 @@ export const authOptions: NextAuthOptions = {
         if (idToken) {
           try {
             const response = await fetch(
-              `${process.env.API_BASE_URL}users/me/`,
+              `${process.env.API_BASE_URL}auth/me/`,
               {
                 method: "GET",
                 headers: {
