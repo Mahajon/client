@@ -9,7 +9,6 @@ import { DashboardHomeNavigation } from "@/components/navigation/dashboard/home"
 export default async function DashboardHome() {
   const shops = await getShopList()
   if (shops.error) {
-    // return <Error statusCode={shops.status} />
     return <SomethingWentWrong error={shops.error} />
   }
   if (shops.length === 1) {
