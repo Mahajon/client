@@ -64,13 +64,13 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  // pages: {
-  //   signIn: "/login",
-  //   signOut: "/logout",
-  //   // error: "/auth/error",
-  //   // verifyRequest: "/auth/verify-request",
-  //   // newUser: "/auth/new-user",
-  // },
+  pages: {
+    signIn: "/login",
+    signOut: "/logout",
+    error: "/login",
+    // verifyRequest: "/auth/verify-request",
+    // newUser: "/auth/new-user",
+  },
 
   jwt: { encode, decode },
   callbacks: {
