@@ -53,7 +53,7 @@ export const authOptions: NextAuthOptions = {
               }
             }
           } catch (err) {
-            return null
+            return err as string
           }
         }
         return null
