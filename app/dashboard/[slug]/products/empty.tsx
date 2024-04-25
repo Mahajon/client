@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 
-import CreateNewProduct from "../new"
+import CreateNewProduct from "../../../../components/dashboard/products/new"
 
 export default async function Empty() {
   return (

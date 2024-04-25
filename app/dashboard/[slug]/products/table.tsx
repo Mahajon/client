@@ -4,14 +4,7 @@ import Link from "next/link"
 
 import { getToken } from "@/lib/user"
 import { Badge } from "@/components/ui/badge"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { CardContent, CardFooter } from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -20,10 +13,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import Empty from "@/components/dashboard/products/list/empty"
-import PaginationComponent from "@/components/dashboard/products/list/pagination"
 
 import ActionButton from "./_table/action"
+import Empty from "./empty"
+import PaginationComponent from "./pagination"
 
 async function getProducts(shopSlug: string, params: string) {
   let data: any
@@ -80,7 +73,7 @@ export default async function ProductTable({
                 <TableHead className="hidden w-[20px] sm:table-cell">
                   ID
                 </TableHead>
-                <TableHead className="hidden w-[20px] sm:table-cell">
+                <TableHead className="hidden w-[20px] md:table-cell">
                   Image
                 </TableHead>
                 <TableHead>Name</TableHead>
@@ -100,10 +93,10 @@ export default async function ProductTable({
             <TableBody>
               {products.results.map((product: any) => (
                 <TableRow key={product.id}>
-                  <TableCell className="hidden md:table-cell">
+                  <TableCell className="hidden sm:table-cell">
                     {product.id}
                   </TableCell>
-                  <TableCell className="hidden sm:table-cell">
+                  <TableCell className="hidden md:table-cell">
                     <Image
                       alt="Product image"
                       className="aspect-square rounded-md object-cover"

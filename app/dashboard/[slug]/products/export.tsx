@@ -18,7 +18,7 @@ export default function ExportDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button size="sm" variant="outline" className="h-8 gap-1">
+        <Button size="sm" variant="outline" className="h-8 w-full gap-1">
           <File className="h-3.5 w-3.5" />
           <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
             Export
@@ -36,11 +36,7 @@ export default function ExportDialog() {
           This feature in under development
         </div>
         <DialogFooter>
-          <DialogClose>
-            <Button variant="outline" size="sm" type="submit">
-              Okay!
-            </Button>
-          </DialogClose>
+          <DialogClose>Okay!</DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
