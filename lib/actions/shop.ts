@@ -34,6 +34,7 @@ export const getShopList = async () => {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      cache: "force-cache",
     })
     if (response.status === 401) {
       return { error: "Unauthorized", status: 401 }

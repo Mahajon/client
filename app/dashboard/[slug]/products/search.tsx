@@ -7,10 +7,9 @@ import { useDebouncedCallback } from "use-debounce"
 export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams()
   const pathname = usePathname()
-  const { replace } = useRouter()
-
+  const router = useRouter()
+  const params = new URLSearchParams(searchParams)
   const handleSearch = useDebouncedCallback((term) => {
-    const params = new URLSearchParams(searchParams)
     if (term) {
       params.set("search", term)
     } else {
@@ -19,8 +18,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     if (params.get("page")) {
       params.delete("page")
     }
-    replace(`${pathname}?${params.toString()}`)
-  }, 500)
+    router.push(`${pathname}?${params.toString()}`)
+  }, 300)
 
   return (
     <div className="z-0 relative flex flex-1 shrink-0">

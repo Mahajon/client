@@ -1,24 +1,7 @@
 import { Suspense } from "react"
-import Image from "next/image"
-import Link from "next/link"
-import {
-  File,
-  Home,
-  LineChart,
-  ListFilter,
-  MoreHorizontal,
-  Package,
-  Package2,
-  PanelLeft,
-  PlusCircle,
-  Search as SearchIcon,
-  Settings,
-  ShoppingCart,
-  Users2,
-} from "lucide-react"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
+// import { getProducts } from "@/lib/actions/product"
+import { getToken } from "@/lib/user"
 import {
   Card,
   CardContent,
@@ -27,34 +10,36 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import ProductTable from "@/components/dashboard/products/list"
+import { Skeleton } from "@/components/ui/skeleton"
 import ExportDialog from "@/components/dashboard/products/list/export"
 import { StatusFilter } from "@/components/dashboard/products/list/filter"
-import { OrderingSelector } from "@/components/dashboard/products/list/ordering"
-import Search from "@/components/dashboard/products/list/search"
+import PaginationComponent from "@/components/dashboard/products/list/pagination"
 import CreateNewProduct from "@/components/dashboard/products/new"
 
-export default function Products({
+import { OrderingSelector } from "./ordering"
+import Search from "./search"
+import ProductTable from "./table"
+
+// async function getProducts(shopSlug: string, params: string) {
+//   let data: any
+//   const token = await getToken()
+//   const response = await fetch(
+//     `${process.env.API_BASE_URL}products/?${params}`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//         Shop: shopSlug,
+//       },
+//     }
+//   )
+//   if (!response.ok) {
+//     throw new Error("Failed to fetch products")
+//   }
+//   data = await response.json()
+//   return data
+// }
+
+export default async function ProductPage({
   params,
   searchParams,
 }: {
@@ -66,6 +51,24 @@ export default function Products({
     status?: string
   }
 }) {
+  // let sParams = new URLSearchParams({
+  //   page: searchParams?.page?.toString() || "1",
+  // })
+
+  // if (searchParams?.search) {
+  //   sParams.append("search", searchParams.search)
+  // }
+
+  // if (searchParams?.ordering) {
+  //   sParams.append("ordering", searchParams.ordering)
+  // }
+
+  // if (searchParams?.status) {
+  //   sParams.append("status", searchParams.status)
+  // }
+
+  // const products = await getProducts(params.slug, sParams.toString())
+
   return (
     <main className=" grid items-start gap-4 p-4 sm:p-6 md:gap-8">
       <div className="flex items-center justify-between gap-2">
@@ -80,7 +83,28 @@ export default function Products({
         </div>
       </div>
 
-      <ProductTable slug={params.slug} params={searchParams} />
+      {/* <ProductTable slug={params.slug} params={searchParams} /> */}
+      <Card>
+        <CardHeader>
+          <CardTitle>Products</CardTitle>
+          <CardDescription>
+            Manage your products and view their sales performance.
+          </CardDescription>
+        </CardHeader>
+
+        <Suspense
+          fallback={
+            <div className="border p-4 flex flex-col gap-2 bg-secondary">
+              <Skeleton className="w-32 h-12" />
+              <Skeleton className="w-full h-16" />
+              <Skeleton className="w-full h-16" />
+              <Skeleton className="w-full h-16" />
+            </div>
+          }
+        >
+          <ProductTable slug={params.slug} searchParams={searchParams} />
+        </Suspense>
+      </Card>
     </main>
   )
 }
