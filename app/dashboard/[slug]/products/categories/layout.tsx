@@ -1,7 +1,7 @@
 import { getCategoryList } from "@/lib/actions/category"
-import CategoryEmptyPage from "@/components/dashboard/category/empty"
 
 import CategoryDivider from "./divider"
+import CategoryEmptyPage from "./empty"
 
 export default async function CategoryLayout({
   children,
