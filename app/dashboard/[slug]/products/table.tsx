@@ -14,9 +14,9 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import ActionButton from "./_table/action"
 import Empty from "./empty"
 import PaginationComponent from "./pagination"
+import ActionButton from "./tableAction"
 
 async function getProducts(shopSlug: string, params: string) {
   let data: any

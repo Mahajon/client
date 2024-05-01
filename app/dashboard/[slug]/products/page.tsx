@@ -7,10 +7,10 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Skeleton } from "@/components/ui/skeleton"
-import CreateNewProduct from "@/components/dashboard/products/new"
 
 import ExportDialog from "./export"
 import { OrderFilter, StatusFilter } from "./filter"
+import CreateNewProduct from "./new"
 import Search from "./search"
 import ProductTable from "./table"
 

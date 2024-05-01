@@ -6,13 +6,17 @@ import { Trash } from "lucide-react"
 import { deleteCategory } from "@/lib/actions/category"
 import {
   AlertDialog,
+  AlertDialogCancel,
   AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import Form from "@/components/form"
-
-import CategoryDeleteForm from "./form"
+import { Delete } from "@/components/form/buttons"
 
 export default function CategoryDeleteDialog({
   data,
@@ -47,7 +51,19 @@ export default function CategoryDeleteDialog({
       </AlertDialogTrigger>
       <AlertDialogContent>
         <Form action={deleteCategoryWithShop}>
-          <CategoryDeleteForm data={data} />
+          <AlertDialogHeader className="mb-4">
+            <AlertDialogTitle>Delete {data.name}</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete category{" "}
+              <strong>{data.name}</strong>? All associated subcategories will be
+              deleted.
+              <input type="hidden" name="id" value={data.id} />
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel className="h-8">Cancel</AlertDialogCancel>
+            <Delete />
+          </AlertDialogFooter>
         </Form>
       </AlertDialogContent>
     </AlertDialog>

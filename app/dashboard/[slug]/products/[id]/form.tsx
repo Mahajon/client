@@ -1,19 +1,17 @@
 "use client"
 
-import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useFormState } from "react-dom"
-import { toast } from "sonner"
 
 import { updateProduct } from "@/lib/actions/product"
 import { Button } from "@/components/ui/button"
-import CategorySection from "@/components/dashboard/products/detail/category"
-import DetailSection from "@/components/dashboard/products/detail/details"
-import ImageSection from "@/components/dashboard/products/detail/images"
-import StatusSection from "@/components/dashboard/products/detail/status"
-import StockSection from "@/components/dashboard/products/detail/stock"
-import TitleSection from "@/components/dashboard/products/detail/title"
 import Form from "@/components/form"
+
+import CategorySection from "./category"
+import DetailSection from "./details"
+import ImageSection from "./images"
+import StatusSection from "./status"
+import StockSection from "./stock"
+import TitleSection from "./title"
 
 export default function ProductForm({
   product,
@@ -24,23 +22,11 @@ export default function ProductForm({
 }) {
   const router = useRouter()
   const updateProductWithShop = updateProduct.bind(null, slug)
-  // const [state, submitForm] = useFormState(updateProductWithSlug, null)
-  // useEffect(() => {
-  //   if (state?.status === 200) {
-  //     toast("Success", {
-  //       description: "Product updated successfully",
-  //     })
-  //   } else if (state != null) {
-  //     toast("Failed to update product", {
-  //       description: "Error: " + state?.error,
-  //     })
-  //     router.refresh()
-  //   }
-  // }, [state])
+
   return (
     <Form action={updateProductWithShop}>
       <div className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
-        <div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">
+        <div className="mx-auto grid flex-1 auto-rows-max gap-4">
           <input type="hidden" name="id" value={product.id} />
           <TitleSection name={product.name} status={product.status} />
           <div className="grid gap-4 md:grid-cols-[1fr_250px] lg:grid-cols-3 lg:gap-8">
@@ -64,8 +50,7 @@ export default function ProductForm({
             <Button
               variant="outline"
               size="sm"
-              onClick={(e) => {
-                e.preventDefault()
+              onClick={() => {
                 router.refresh()
               }}
             >

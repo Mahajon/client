@@ -1,12 +1,7 @@
 import { getProduct, updateProduct } from "@/lib/actions/product"
 import { Button } from "@/components/ui/button"
-import ProductForm from "@/components/dashboard/products/detail"
-import CategorySection from "@/components/dashboard/products/detail/category"
-import DetailSection from "@/components/dashboard/products/detail/details"
-import ImageSection from "@/components/dashboard/products/detail/images"
-import StatusSection from "@/components/dashboard/products/detail/status"
-import StockSection from "@/components/dashboard/products/detail/stock"
-import TitleSection from "@/components/dashboard/products/detail/title"
+
+import ProductForm from "./form"
 
 export default async function ProductDetail({
   params,
@@ -17,7 +12,7 @@ export default async function ProductDetail({
 
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex flex-col sm:gap-4 sm:p-4 md:p-8 lg:px-16 lg:py-8 xl:px-24 ">
         <ProductForm product={product} slug={params.slug} />
       </div>
     </div>

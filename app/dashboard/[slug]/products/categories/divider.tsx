@@ -8,7 +8,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable"
 
-import CategoryList from "."
+import CategoryList from "./list"
 
 export default function CategoryDivider({
   children,

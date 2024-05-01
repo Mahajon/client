@@ -1,7 +1,14 @@
-"use client"
-
+import { Suspense } from "react"
 import { useParams, useRouter } from "next/navigation"
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -11,9 +18,46 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import CategoryDeleteDialog from "../delete"
+import CreateNewcategory from "../new"
+import CategoryDeleteDialog from "./delete"
 
-export default function CategoryTable({
+// import CategoryTable from "./table"
+
+export default function CategoryList({
+  categories,
+  activeId,
+}: {
+  categories: any[]
+  activeId: string
+}) {
+  console.log("activeId", activeId)
+
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <CardTitle>Categories</CardTitle>
+          <CreateNewcategory />
+        </div>
+        <CardDescription>
+          Manage your products and view their sales performance.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Suspense fallback={<div>Loading...</div>}>
+          <CategoryTable activeId={activeId} categories={categories} />
+        </Suspense>
+      </CardContent>
+      <CardFooter className="w-full flex items-center md:items-end justify-between">
+        <div className="w-full text-xs text-muted-foreground">
+          Showing <strong>{categories.length}</strong> categories
+        </div>
+      </CardFooter>
+    </Card>
+  )
+}
+
+function CategoryTable({
   categories,
   activeId,
 }: {

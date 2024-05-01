@@ -1,11 +1,11 @@
-import { getCategoryList } from "@/lib/actions/category"
-import CategoryEmptyPage from "@/components/dashboard/category/empty"
-import CategoryList from "@/components/dashboard/category/list"
-
 export default async function Categories({
   params,
 }: {
   params: { slug: string }
 }) {
-  return <div>page</div>
+  return (
+    <div className="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
+      page
+    </div>
+  )
 }
