@@ -18,8 +18,8 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-import CreateNewcategory from "../new"
 import CategoryDeleteDialog from "./delete"
+import CreateNewcategory from "./new"
 
 // import CategoryTable from "./table"
 

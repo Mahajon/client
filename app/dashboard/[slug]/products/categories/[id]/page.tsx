@@ -1,7 +1,7 @@
 import { getCategoryDetail } from "@/lib/actions/category"
-import CategoryUpdateForm from "@/components/dashboard/category/detail/update"
 
 import CategoryDeleteDialog from "../delete"
+import CategoryUpdateForm from "./update"
 
 export default async function CategoryDetail({
   params,
