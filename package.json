@@ -45,6 +45,7 @@
     "next-themes": "^0.3.0",
     "next13-progressbar": "^1.2.1",
     "nextjs-progressbar": "^0.0.16",
+    "nextjs-toploader": "^1.6.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-resizable-panels": "^2.0.18",

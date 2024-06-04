@@ -1,10 +1,13 @@
 "use client"
 
-import { FormEvent } from "react"
+import { error } from "console"
+import { FormEvent, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { CheckCircle, CircleX, LoaderCircle } from "lucide-react"
 import { toast } from "sonner"
+import { useDebouncedCallback } from "use-debounce"
 
 import { submitShopForm } from "@/lib/actions/shop"
 import { Button } from "@/components/ui/button"
@@ -20,6 +23,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 
 export default function NewShopPage() {
+  const [slugIsOkay, setSlugIsOkay] = useState("")
   const router = useRouter()
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -31,11 +35,11 @@ export default function NewShopPage() {
       formData.append("logo", logoURL)
     }
     const data = await submitShopForm(formData)
-    if (!data.error) {
+    if (data.error) {
+      toast.error("Error creating shop. Please try again.")
+    } else {
       toast.success("Shop created successfully")
       router.refresh()
-    } else {
-      toast.error("Error creating shop")
     }
   }
 
@@ -69,6 +73,23 @@ export default function NewShopPage() {
       reader.readAsDataURL(file)
     }
   }
+
+  const checkShopSlug = useDebouncedCallback((slug) => {
+    setSlugIsOkay("checking")
+    console.log(slug)
+
+    // check if slug is available
+    // randomly set ok or error after 2 seconds
+    setTimeout(() => {
+      const random = Math.random()
+      if (random > 0.5) {
+        setSlugIsOkay("ok")
+      } else {
+        setSlugIsOkay("error")
+      }
+    }, 2000)
+  }, 300)
+
   return (
     <Card className="min-w-2xl mx-auto">
       <CardHeader>
@@ -97,17 +118,38 @@ export default function NewShopPage() {
                 Shop Slug<span className="ml-1 font-cal text-red-500">*</span>
               </Label>
 
-              <div className="mt-1 flex rounded-md">
+              <div className="mt-1 flex rounded-md relative">
                 <Input
                   type="text"
                   name="slug"
                   id="slug"
-                  className="block w-full min-w-0 flex-1 rounded-none rounded-l-md px-3 py-2  sm:text-sm "
+                  className="block w-full min-w-0 flex-1 rounded-md px-3 py-2  sm:text-sm "
                   placeholder="shopname"
+                  onChange={(e) => checkShopSlug(e.target.value)}
                 />
-                <span className="inline-flex items-center rounded-r-md border border-l-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
-                  .mahajon.app
+                <span className="absolute right-0 top-0 h-full z-10  inline-flex items-center rounded-r-md border border-l-1 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
+                  .mahajon.shop
                 </span>
+              </div>
+              <div>
+                {slugIsOkay === "checking" && (
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                    <LoaderCircle className="animate-spin h-4 w-4 mr-2 inline-block" />
+                    Checking slug...
+                  </span>
+                )}
+                {slugIsOkay === "ok" && (
+                  <span className="text-xs text-green-500 dark:text-green-400">
+                    <CheckCircle className="h-4 w-4 mr-2 inline-block" />
+                    Slug is available
+                  </span>
+                )}
+                {slugIsOkay === "error" && (
+                  <span className="text-xs text-red-500 dark:text-red-400">
+                    <CircleX className="h-4 w-4 mr-2 inline-block" />
+                    Slug is not available
+                  </span>
+                )}
               </div>
             </div>
 
@@ -137,18 +179,22 @@ export default function NewShopPage() {
                 </div>
                 <div
                   id="logo-preview"
-                  className="relative flex aspect-square h-full max-h-20 flex-col items-center justify-center"
+                  className="aspect-square overflow-hidden relative flex aspect-square h-full max-h-20 flex-col items-center justify-center"
                 >
                   <img
                     src="https://placehold.co/100"
                     className="object-cover"
-                    alt="Placeholder Logo"
+                    alt="Shop Logo"
                   />
                 </div>
               </div>
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={slugIsOkay != "ok"}
+            >
               Create Shop
             </Button>
           </div>

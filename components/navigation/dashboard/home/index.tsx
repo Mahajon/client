@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Package2 } from "lucide-react"
 
@@ -16,7 +17,12 @@ export function DashboardHomeNavigation({
         <header className="flex h-14 w-full items-center justify-between gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
           <div className="w-full flex-1">
             <Link href="/" className="flex items-center gap-2 font-cal">
-              <Package2 className="size-5" />
+              <Image
+                src="/logo/icon.svg"
+                width={30}
+                height={30}
+                alt="Mahajon"
+              />
             </Link>
           </div>
           <div className="flex items-center justify-between gap-x-4">
