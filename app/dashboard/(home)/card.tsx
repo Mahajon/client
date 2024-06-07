@@ -31,6 +31,7 @@ export default function ShopCard(shopObj: any) {
             <a
               href={`http://${shop.slug}${process.env.NEXT_PUBLIC_SHOP_ROOT_DOMAIN}`}
               target="_blank"
+              rel="noreferrer"
             >
               <Badge variant="outline" className="flex items-center gap-2">
                 <SquareArrowOutUpRight className="size-4" />
