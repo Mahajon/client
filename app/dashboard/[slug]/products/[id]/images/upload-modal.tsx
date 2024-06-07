@@ -176,7 +176,7 @@ export default function ImageUploadModal({
             {loading ? (
               <span className="flex items-center justify-center gap-2">
                 <LoaderIcon className="animate-spin" />
-                "Uploading..."{" "}
+                Uploading...{" "}
               </span>
             ) : (
               "Confirm Upload"
