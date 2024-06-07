@@ -8,6 +8,22 @@ import { getServerSession } from "next-auth"
 
 import { getToken } from "@/lib/user"
 
+export const checkShopSlug = async (slug: string) => {
+  const token = await getToken()
+  const response = await fetch(
+    `${process.env.API_BASE_URL}shops/check/${slug}/`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+  if (response.status === 404) {
+    return { status: 404 }
+  }
+  return { status: 200 }
+}
+
 export const submitShopForm = async (formData: any) => {
   const token = await getToken()
   const response = await fetch(`${process.env.API_BASE_URL}shops/create/`, {

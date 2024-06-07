@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import {
   Bell,
@@ -42,8 +43,8 @@ const DashboardSidebar = () => {
     <div className="t relative hidden border-r bg-background md:block">
       <div className="sticky top-0 flex h-full max-h-screen flex-col gap-2">
         <div className="flex items-center justify-between gap-x-3 px-4 py-3">
-          <Link href="/" className="flex items-center gap-2 font-cal">
-            <Package2 className="size-5" />
+          <Link href="/dashboard" className="flex items-center gap-2 font-cal">
+            <Image src="/logo/icon.svg" width={36} height={36} alt="Mahajon" />
           </Link>
           <Slash className="h-4 text-gray-600" />
           <ShopSelect />

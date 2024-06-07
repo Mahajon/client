@@ -1,7 +1,7 @@
 "use client"
 
 import { error } from "console"
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -9,7 +9,7 @@ import { CheckCircle, CircleX, LoaderCircle } from "lucide-react"
 import { toast } from "sonner"
 import { useDebouncedCallback } from "use-debounce"
 
-import { submitShopForm } from "@/lib/actions/shop"
+import { checkShopSlug, submitShopForm } from "@/lib/actions/shop"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -74,20 +74,14 @@ export default function NewShopPage() {
     }
   }
 
-  const checkShopSlug = useDebouncedCallback((slug) => {
+  const checkSlug = useDebouncedCallback(async (slug) => {
     setSlugIsOkay("checking")
-    console.log(slug)
-
-    // check if slug is available
-    // randomly set ok or error after 2 seconds
-    setTimeout(() => {
-      const random = Math.random()
-      if (random > 0.5) {
-        setSlugIsOkay("ok")
-      } else {
-        setSlugIsOkay("error")
-      }
-    }, 2000)
+    const res = await checkShopSlug(slug)
+    if (res.status === 404) {
+      setSlugIsOkay("ok")
+    } else {
+      setSlugIsOkay("error")
+    }
   }, 300)
 
   return (
@@ -125,7 +119,7 @@ export default function NewShopPage() {
                   id="slug"
                   className="block w-full min-w-0 flex-1 rounded-md px-3 py-2  sm:text-sm "
                   placeholder="shopname"
-                  onChange={(e) => checkShopSlug(e.target.value)}
+                  onChange={(e) => checkSlug(e.target.value)}
                 />
                 <span className="absolute right-0 top-0 h-full z-10  inline-flex items-center rounded-r-md border border-l-1 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm">
                   .mahajon.shop

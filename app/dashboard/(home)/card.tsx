@@ -1,6 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
+import { SquareArrowOutUpRight } from "lucide-react"
 
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -14,35 +16,42 @@ import {
 export default function ShopCard(shopObj: any) {
   const shop = shopObj.shop
   return (
-    <Link href={`/dashboard/${shop.slug}`}>
-      <Card className="hover:shadow">
-        <CardHeader className="flex flex-row items-center gap-4">
-          <Image
-            alt={shop.name}
-            className="aspect-square rounded object-cover"
-            height="48"
-            src={shop.logo ? shop.logo : "/placeholder.svg"}
-            width="48"
-          />
-          <div className="grid gap-1">
-            <CardTitle>{shop.name}</CardTitle>
-            <CardDescription>{shop.slug}</CardDescription>
-          </div>
-          <Button className="ml-auto" size="icon" variant="ghost">
-            <MoreHorizontalIcon className="size-4" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-        </CardHeader>
-        <CardContent className="flex flex-col items-start gap-2 border-t py-2">
-          <div className="flex gap-2 py-4">
+    <Card className="hover:shadow">
+      <CardHeader className="flex flex-row items-center gap-4">
+        <Image
+          alt={shop.name}
+          className="aspect-square rounded object-cover"
+          height="56"
+          src={shop.logo ? shop.logo : "/placeholder.svg"}
+          width="56"
+        />
+        <div className="grid gap-1">
+          <CardTitle>{shop.name}</CardTitle>
+          <CardDescription>
+            <a
+              href={`http://${shop.slug}${process.env.NEXT_PUBLIC_SHOP_ROOT_DOMAIN}`}
+              target="_blank"
+            >
+              <Badge variant="outline" className="flex items-center gap-2">
+                <SquareArrowOutUpRight className="size-4" />
+                {`${shop.slug}${process.env.NEXT_PUBLIC_SHOP_ROOT_DOMAIN}`}
+              </Badge>
+            </a>
+          </CardDescription>
+        </div>
+        <Button className="ml-auto" size="icon" variant="ghost">
+          <MoreHorizontalIcon className="size-4" />
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </CardHeader>
+      <CardContent className="flex flex-col items-start gap-2 border-t py-2">
+        <div className="flex gap-2 py-4">
+          <Link href={`/dashboard/${shop.slug}`}>
             <Button size="sm">Open Shop</Button>
-            <Button size="sm" variant="outline">
-              Delete Shop
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </Link>
+          </Link>
+        </div>
+      </CardContent>
+    </Card>
   )
 }
 

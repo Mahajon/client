@@ -43,7 +43,7 @@ export default function ProductForm({
                 category={product.category}
                 subcategory={product.subcategory}
               />
-              <ImageSection images={product.images} />
+              <ImageSection images={product.images} slug={slug} product={product.id} />
             </div>
           </div>
           <div className="flex items-center justify-center gap-2 md:hidden">
